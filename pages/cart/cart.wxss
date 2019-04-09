@@ -1,0 +1,310 @@
+/* pages/cart/cart.wxss */
+.all {
+    width: 100%;
+    height: 100vh;
+    background: #F4F4F4;
+}
+.line {
+    width: 100%;
+    height: 88rpx;
+    background: #fff;
+}
+.bot-list-line {
+    background:#F4F4F4;
+    width: 100%;
+    height: 20rpx;
+}
+/* 编辑栏 */
+.edit-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 0 125rpx 0 30rpx;
+    box-sizing: border-box;
+    color: #666666;
+    font-size: 32rpx;
+    background: #fff;
+    z-index: 1000;
+    /* border-top: .5rpx solid #DBDBDB; */
+    box-shadow: 0px 3px 6px 0px rgba(102,102,102,0.08);
+}
+.edit-box .edit-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 125rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #666666;
+}
+/* 购物车空 缺省 */
+.blank-box {
+    width: 100%;
+    height: 100vh;
+    padding-top: 20vh;
+    box-sizing: border-box;
+    border-top: .5rpx solid #DBDBDB;
+    background: #fff;
+}
+.blank-box .cart-blank {
+    display: block;
+    height: 164rpx;
+    width: 164rpx;
+    margin: 0 auto;
+}
+.blank-box .blank-title {
+    width: 100%;
+    line-height: 38rpx;
+    font-size: 26rpx;
+    color: #666666;
+    text-align: center;
+    /* margin: 36rpx 0 24rpx 0; */
+    margin: 36rpx 0 24rpx 0;
+}
+.blank-box .go-buy {
+    width: 200rpx;
+    line-height: 50rpx;
+    height: 50rpx;
+    font-size: 26rpx;
+    color: #E85352;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 5rpx;
+    border: .5rpx solid rgba(232,83,82,1);
+}
+/* 购物车有商品 */
+.cart-box {
+    width: 100%;
+    background: #F4F4F4;
+    padding-bottom: 150rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+/* 商品列表 */
+.cart-box .cart-list{
+    width: 100%;
+    /* margin-bottom: 20rpx; */
+    /* background: #fff; */
+}
+
+/* shop */
+.cart-box .cart-list .shop{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    color: #333333;
+    background: #F9F9F9;
+}
+/* 选择 */
+.cart-list .select-box {
+    width: 86rpx;
+    text-align: center;
+}
+.un-select-img {
+    width: 36rpx;
+    height: 36rpx;
+    vertical-align: middle;
+}
+/* shop 基本信息 */
+.cart-list .shop .shop-msg {
+    /* 545 */
+    /* width: 100%; */
+    overflow: hidden;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+.shop .shop-msg .shop-img {
+    width: 36rpx;
+    height: 36rpx;
+    vertical-align: middle;
+    border-radius: 3rpx;
+}
+.shop .shop-msg .shop-name {
+    vertical-align: middle;
+    margin-left: 14rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+/* goods-list */
+.cart-box .cart-list .goods-list {
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+.cart-list .goods-list .goods-item {
+    width: 100%;
+    overflow: hidden;
+    padding: 25rpx 0 30rpx 0;
+    box-sizing: border-box;
+    position: relative;
+}
+/* img */
+.goods-item .goods-img-box {
+    width: 180rpx;
+}
+.goods-item .goods-img {
+    width: 180rpx;
+    height: 180rpx;
+    display: block;
+}
+/* 商品信息 */
+.goods-item .goos-msg {
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}.goos-msg .goods-name{
+    font-size: 26rpx;
+    height: 76rpx;
+    line-height: 38rpx;
+    color: #333333;
+    width: 100%;
+    overflow: hidden;
+}
+.goos-msg .goods-spec{
+    font-size: 24rpx;
+    height: 40rpx;
+    line-height: 38rpx;
+    color: #999999;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+}
+.goos-msg .goods-spec .spec-item {
+    height: 40rpx;
+    line-height: 38rpx;
+    background: #F4F4F4;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 5rpx;
+}
+.goos-msg .bottom-box{
+    height: 50rpx;
+    width: 100%;
+    overflow: hidden;
+    color: #e85352;
+    font-size: 30rpx;
+    line-height: 50rpx;
+    position: relative;
+}
+.goos-msg .bottom-box .symbol{
+    font-size: 24rpx;
+}
+/* num-edit */
+.goos-msg .bottom-box .num-edit {
+    height: 46rpx;
+    line-height: 46rpx;
+    border: .5rpx solid #DBDBDB;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 160rpx;
+    display: flex;
+    box-sizing: border-box;
+}
+.goos-msg .bottom-box .num-edit .num-item {
+    font-size: 26rpx;
+    line-height: 42rpx;
+    text-align: center;
+}
+.goos-msg .bottom-box .num-edit .add-btn {
+    width: 50rpx;
+    height: 100%;
+    font-size: 28rpx;
+    color: #E85352;
+}
+.goos-msg .bottom-box .num-edit .del-btn {
+    width: 50rpx;
+    height: 100%;
+    font-size: 28rpx;
+    color: #999999;
+}
+.goos-msg .bottom-box .num-edit .buy-num {
+    width: 60rpx;
+    height: 100%;
+    color: #333333;
+    border-left: .5rpx solid #DBDBDB;
+    border-right: .5rpx solid #DBDBDB;
+}
+/* line */
+.bot-line {
+    position: absolute;
+    width: calc(100% - 86rpx);
+    left: 86rpx;
+    bottom: 0.25rpx;
+    height: .5rpx;
+    background-color: #dedede;
+}
+/* 底部按钮 */
+.bot-btn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 100%;
+    z-index: 1000;
+    background: #fdfafa;
+    box-shadow:0px -2px 5px 1px rgba(153,153,153,0.1);
+}
+.bot-btn .bot-select-box {
+    width: 86rpx;
+    text-align: center;
+}
+.un-select-img {
+    width: 36rpx;
+    height: 36rpx;
+    vertical-align: middle;
+}
+.bot-btn .select-title {
+    font-size: 30rpx;
+    color: #666666;
+    vertical-align: middle;
+}
+.bot-btn .price-box {
+    text-align: right;
+    padding-right: 24rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.bot-btn .price-box .all-title {
+    font-size: 28rpx;
+    color: #333;
+}
+.bot-btn .price-box .all-price {
+    color: rgb(232, 83, 82);
+    font-size: 26rpx;
+}
+.price-box .all-price .price {
+    font-size: 36rpx;
+}
+/* 去结算按钮 */
+.bot-btn .create-order {
+    width: 210rpx;
+    background-color: #e85352;
+    color: #fff;
+    text-align: center;
+    font-size: 32rpx;
+}
+/* 删除按钮 */
+.bot-btn .del {
+    width: 210rpx;
+    text-align: center;
+    padding: 16rpx 30rpx 16rpx 20rpx;
+    box-sizing: border-box;
+}
+.bot-btn .del .del-btn {
+    width: 160rpx;
+    height: 66rpx;
+    line-height: 66rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #e85352;
+    border-radius: 33rpx;
+    border: .5rpx solid rgba(232,83,82,1);
+}

@@ -1,0 +1,77 @@
+/* pages/binding/binding.wxss */
+.top {
+    text-align: center;
+    width: 100%;
+  }
+  .top image {
+    width: 264rpx;
+    height: 162rpx;
+  }
+  .main {
+    width: 100%;
+    padding:0rpx 40rpx 0rpx 40rpx;
+    box-sizing: border-box;
+  }
+  .phone, .code, .password {
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 100%;
+    border-bottom: 1px solid #DBDBDB;
+    margin-top: 25rpx;
+    
+  }
+  .input-box .icon {
+    width: 30rpx;
+    height: 40rpx;
+    display: inline-block;
+    float: left;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+  }
+ 
+  .input-box .input {
+    height: 70rpx;
+    font-size: 28rpx;
+    width: 400rpx;
+  }
+  .codeBtn {
+    display: inline-block;
+    width: 200rpx;
+    height: 70rpx;
+    font-size: 28rpx;
+    float: right;
+    background: #e85353;
+    color: #fff;
+    margin-top: 27rpx;
+  }
+  .right {
+    width: 45rpx;
+    height: 33rpx;
+    float: right;
+  }
+   .right .eyes {
+    width: 100%;
+    height: 20rpx;
+    display: inline-block;
+   
+  }
+   .right .eye {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+   
+  }
+  .submit {
+    margin-top:100rpx;
+    width: 100%;
+   background: #e85353;
+    color: #fff
+  }
+  .protocol {
+    font-size: 32rpx;
+   margin-top: 24rpx;
+  }
+  .protocol .btn {
+     display: inline-block;
+     color: #e85353;
+  }

@@ -1,0 +1,60 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='page' scroll-x="true">
+   <view class='addressdetail' bindtap='addressChoose'>
+     <view class='notaddress' wx:if="{{notAddress==false}}">
+        <view class='nottop'>
+          <image lazy-load src='../../image/createOrder/addressimg.png'></image> <text>还没有地址？</text>
+        </view>
+        <view class='notup'>
+          <text>请填写您的收货地址</text>
+        </view>
+     </view>
+     <view class='addresstop' wx:if="{{notAddress}}">
+       <text decode="{{true}}"><text class='addressname'>{{address.name}}</text> &nbsp;&nbsp;&nbsp;<text class='addressphone'>{{address.phone}}</text></text>
+     </view>
+     <view class='addressup'  wx:if="{{notAddress}}">
+       <text>收货地址：{{address.address}} {{address.detail}}
+       </text>
+     </view>
+     <view class='sm_right'>
+       <image lazy-load src='../../image/createOrder/more_right.png'></image>
+     </view>
+     <view class='sm_bottom'>
+       <image lazy-load src='../../image/locallife/dizhi_youjian.png'></image>
+     </view>
+   </view>
+   <view class='store-goos' wx:for="{{goodsOrder.list}}"  wx:key>
+      <view class='goos-detail' >
+         <view class='goos-picker'>
+           <view class='picker'><image lazy-load src='{{item.shopImg}}'></image></view>
+           <text>{{item.shopName}}</text>       
+         </view>
+         <view class='text-img' wx:for="{{item.list}}" wx:for-item="goodsLists" wx:key>
+            <view class='imgs'><image lazy-load class='image' src='{{goodsLists.goodsImg}}'></image></view>
+            <view class='text'>
+              <text class='textdetail'>{{goodsLists.name}}</text>
+              <text class='texttype'>{{goodsLists.skuName}}</text>
+              <text class='price'><text>￥</text>{{goodsLists.price}} <text class='number'>x{{goodsLists.num}}</text></text>
+            </view>
+         </view>
+      </view>
+      <view class='goos-postage'>
+         <text>配送方式</text>
+         <view class='gs-right'>
+           <text>快递￥{{item.transMoney}}</text>
+           <!-- <image class='gs-right_img' src='../../image/createOrder/more_right.png'></image> -->
+         </view>
+      </view>
+   </view>  
+   <view class='favourable'>
+         <!-- <view class='favourable-top'>
+           <text>优惠券</text> <view class='gs-rights'><text>-￥10</text> <image src='../../image/locallife/mid_right.png' class='gs-right_img'></image></view>
+         </view> -->
+         <view class='favourable-up'>
+            <text>积分优惠</text><view class='gs-rights'><text>-￥{{goodsOrder.useScore}}</text> <!--<image src='../../image/locallife/mid_right.png' class='gs-right_imgs'></image>--></view> 
+         </view>
+      </view>
+      <view class='submit' bindtap='craterOder'>
+        <text class='submit-price'><text>￥</text>{{goodsOrder.totalMoney}} <text class='submitorder' bindtap='craterOder'>提交订单</text> </text>
+      </view>
+</view>

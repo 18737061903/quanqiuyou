@@ -1,0 +1,23 @@
+<!--pages/businessInfor/businessInfor.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<view class='line'></view>
+<view class='list'>
+    <view class='item'>
+        <view class='item-content'>
+            <text class='title'>营业时间</text>
+            <view class='time' wx:for="{{businessInfor.openTime}}"  wx:key="index">{{filter.formatterWeek(item.startWeek)}}{{item.endWeek == item.startWeek ? '' : '至' + filter.formatterWeek(item.endWeek)}} :  {{item.startTime}} - {{item.endTime}}</view>
+        </view>
+    </view>
+    <view class='item'>
+        <view class='item-content'>
+            <text class='title'>店铺设施</text>
+            <view class='facility' wx:for="{{businessInfor.offer}}"  wx:key="index">{{item}}</view>
+        </view>
+    </view>
+    <view class='item'>
+        <view class='item-content border-none'>
+            <text class='title'>店铺标签</text>
+            <view class='label' wx:for="{{businessInfor.label}}"  wx:key="index">{{item}}</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,126 @@
+/* pages/address/address.wxss */
+.page{
+  width: 100%;
+  height: 100vh;
+  background: #f4f4f4;
+  overflow: hidden;
+}
+.peson-msg{
+  transition:all 0.5s;
+  width: 750rpx;
+  padding: 27rpx  102rpx 29rpx 80rpx;
+  background: #fff;
+  box-sizing: border-box;
+  position: relative;
+  border-top: solid 1rpx #f4f4f4;
+  clear: both;
+}
+
+.msg-top{
+    clear: both;
+}
+.msg-top text:first-child{
+  width: 260rpx;
+  height: 40rpx;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:40rpx;
+  float: left;
+}
+.msg-top text:last-child{
+  float: right;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(51,51,51,1);
+  line-height:40rpx;
+}
+.msg-up{
+    clear: both;
+}
+.msg-up text{
+  font-size:24rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:33rpx;
+}
+.img-lefe{
+  position: absolute;
+  top: 50%;
+  margin-top:-16rpx; 
+  left: 24rpx;
+  width: 32rpx;
+  height: 32rpx;
+}
+.img-lefe image{
+  width: 100%;
+  height: 100%;
+}
+.img-right{
+  position: absolute;
+  top: 50%;
+  margin-top:-24rpx; 
+  right: 36rpx;
+  width: 48rpx;
+  height: 48rpx;
+}
+.img-right image{
+  width: 100%;
+  height: 100%;
+}
+.delete {
+  transition:all 0.5s;
+  position: absolute;
+  right: -170rpx;
+  top: 0;
+  width: 170rpx;
+  height: 100%;
+  background: rgba(232, 83, 82, 1);
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(255,255,255,1);
+}
+.newaddress{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  text-align: center;
+  background:linear-gradient(238deg,rgba(239,102,77,1) 0%,rgba(232,83,82,1) 100%);
+  font-size:32rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(249,245,245,1);
+
+}
+.loding{
+    width: 100%;
+    height: 100vh;
+    padding-top: 20vh;
+    box-sizing: border-box;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.loding image{
+  width: 155rpx;
+  height: 162rpx;
+}
+.loding text{
+  width:390rpx;
+  font-size:26rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+  line-height:37rpx;
+}

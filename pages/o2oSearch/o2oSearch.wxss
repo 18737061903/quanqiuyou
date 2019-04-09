@@ -1,0 +1,307 @@
+/* pages/o2oSearch/o2oSearch.wxss */
+.all {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 90rpx;
+    box-sizing: border-box;
+}
+.header {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 14rpx 30rpx;
+    box-sizing: border-box;
+    background: #F4F4F4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1005;
+    box-shadow: 0px 2rpx 3rpx 0px rgba(102,102,102,0.06);
+}
+.search-box {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    display: flex;
+}
+.search-box .search {
+    width: calc(100% - 94rpx);
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #fff;
+    border-radius: 30rpx;
+    overflow: hidden;
+    padding:  0rpx 68rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+.search .search-icon {
+    width: 37rpx;
+    height: 37rpx;
+    position: absolute;
+    left: 21rpx;
+    top: 12rpx;
+}
+.search .search-txt {
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+.search .close-icon {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 14rpx;
+}
+.search-box .submit {
+    width: 94rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 32rpx;
+    color: #666666;
+    text-align: right;
+}
+/* 无搜索内容 */
+.default {
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+/* 推荐活动 */
+.recomm-act {
+    width: 100%;
+}
+.recomm-act .head {
+    width: 100%;
+    height: 78rpx;
+    line-height: 78rpx;
+    display: flex;
+}
+.recomm-act .head .title {
+    width: calc(100% - 60rpx);
+    height: 78rpx;
+    line-height: 78rpx;
+    font-size: 28rpx;
+    color: #999999;
+}
+.recomm-act .head .icon {
+    width: 60rpx;
+    height: 78rpx;
+    position: relative;
+}
+.head .icon .del-icon{
+    width: 24rpx;
+    height: 26rpx;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -13rpx;
+}
+/*  */
+.recomm-act .recomm-title {
+    width: 100%;
+}
+.recomm-title .title-item {
+    width: 336rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #333333;
+    padding: 0 48rpx;
+    box-sizing: border-box;
+    background: #F4F4F4;
+    float: left;
+    margin-right: 18rpx;
+    margin-bottom: 8rpx;
+}
+.recomm-title .title-item:nth-child(2n) {
+    margin-right: 0;
+}
+/* 搜索出的o2o活动 */
+.act-box {
+    width: 100%;
+    padding: 0 30rpx 30rpx 30rpx;
+    box-sizing: border-box;
+}
+/* 活动列表 */
+.activity-list {
+    width: 100%;
+    padding-bottom: 10rpx;
+    box-sizing: border-box;
+}
+.activity-list .activity-item {
+    padding-top: 30rpx;
+    box-sizing: border-box;
+    width: 100%;
+}
+/* 店铺信息 */
+.activity-item .shop-msg {
+    width: 100%;
+    margin-bottom: 12rpx;
+}
+.shop-msg .shop-img {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    float: left;
+    margin-right: 14rpx;
+    background: #DBDBDB;
+}
+.shop-msg .shop-name {
+    width: 250rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    float: left;
+    color: #333333;
+    font-size: 28rpx;
+}
+.shop-msg .shop-distance {
+    height: 60rpx;
+    line-height: 60rpx;
+    float: right;
+    color: #666666;
+    font-size: 26rpx;
+}
+.shop-msg .shop-distance {
+    height: 60rpx;
+    line-height: 60rpx;
+    float: right;
+    color: #666666;
+    font-size: 26rpx;
+    margin-left: 30rpx;
+}
+.shop-msg .create-time {
+    height: 60rpx;
+    line-height: 60rpx;
+    float: right;
+    color: #666666;
+    font-size: 26rpx;
+}
+/*  活动信息 */
+.activity-item .activity-detail {
+    width: 100%;
+    border-radius: 8rpx;
+    overflow: hidden;
+}
+.activity-detail .activity-msg {
+    width: 100%;
+    height: 320rpx;
+    position: relative;
+    overflow: hidden;
+}
+.activity-detail .activity-img {
+    width: 100%;
+    height: 320rpx;
+    display: block;
+}
+.activity-detail .activity-zz {
+    width: calc(100% - 1rpx);
+    height: 115rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background:linear-gradient(180deg,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.8) 100%);
+    z-index: 999;
+}
+.activity-detail .activity-desc {
+    width: calc(100% - 1rpx);
+    height: 115rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    padding: 16rpx 20rpx;
+    box-sizing: border-box;
+}
+.activity-desc .activity-title {
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 34rpx;
+    color: #FFFFFF;
+    margin-bottom: 6rpx;
+}
+.activity-desc .activity-content {
+    width: 100%;
+    height: 37rpx;
+    line-height: 37rpx;
+    font-size: 26rpx;
+    color: #FFFFFF;
+}
+.activity-msg .activity-label {
+    position: absolute;
+    right: .5rpx;
+    top: 0;
+    height: 34rpx;
+    line-height: 34rpx;
+    font-size: 22rpx;
+    color: #FFFFFF;
+    padding: 0 25rpx;
+    box-sizing: border-box;
+    background: #FF7C29;
+    border-radius: 0 8rpx 0 8rpx;
+}
+.activity-msg .activity-label-reduce {
+    background: #E85352;
+}
+.activity-msg .activity-label-coup {
+    background: #FF7C29;
+}
+/* 操作 */
+.activity-detail .operation {
+    width: 100%;
+    height: 77rpx;
+    line-height: 77rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    text-align: right;
+    border-left :.5rpx solid rgba(219,219,219,1);
+    border-right :.5rpx solid rgba(219,219,219,1);
+    border-bottom :.5rpx solid rgba(219,219,219,1);
+    border-radius: 0 0 8rpx 8rpx;
+}
+.operation .collection {
+    height: 77rpx;
+    line-height: 77rpx;
+    font-size: 28rpx;
+    color: #333333;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12rpx;
+}
+.operation .hot-img {
+    width: 30rpx;
+    height: 34rpx;
+    vertical-align: middle;
+}
+.operation .collect-img {
+    width: 35rpx;
+    height: 33rpx;
+    vertical-align: middle;
+}
+/* 活动半屏缺省 */
+.half-default {
+    margin-top: 120rpx;
+    line-height: 37rpx;
+    font-size: 26rpx;
+    color: #666666;
+    text-align: center;
+}
+/* 活动半屏缺省 */
+.no-shop {
+    margin-top: 140rpx;
+    text-align: center;
+}
+.no-shop .shop-blank {
+    width: 187rpx;
+    height: 168rpx;
+    margin-bottom: 36rpx;
+}
+.no-shop .no-more-desc {
+    line-height: 37rpx;
+    font-size: 26rpx;
+    color: #666;
+}

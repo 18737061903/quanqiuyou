@@ -1,0 +1,11 @@
+/* pages/protocol/protocol.wxss */
+.main{
+  padding: 0rpx 30rpx
+}
+.p{
+  padding-bottom:30rpx;
+  padding-top: 30rpx;
+}
+.l{
+  line-height:55rpx
+}

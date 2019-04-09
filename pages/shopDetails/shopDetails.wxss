@@ -1,0 +1,532 @@
+/* pages/shopDetails/shopDetails.wxss */
+.all {
+    width: 100%;
+    padding-bottom: 120rpx;
+    box-sizing: border-box;
+    height: 100vh;
+    background: #F4F4F4;
+}
+.padding {
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.mg-bot {
+    margin-bottom: 20rpx;
+}
+.line {
+    height: .5rpx;
+    width: 100%;
+    background: #DBDBDB;
+}
+/* section-one  店铺详细信息*/
+.section-one {
+    width: 100%;
+    background: #fff;
+}
+.section-one .shop-name {
+    line-height: 56rpx;
+    font-size: 40rpx;
+    color: #333;
+    display: block;
+    margin-bottom: 13rpx;
+}
+.section-one .shop-msg {
+    width: 100%;
+    line-height: 37rpx;
+    font-size: 26rpx;
+    color: #333;
+    text-align: right;
+    margin-bottom: 30rpx;
+}
+.section-one .swiper-box {
+    width: 690rpx;
+    height: 320rpx;
+    border-radius: 18rpx;
+    margin: 0 auto;
+    background: #F4F4F4;
+    position: relative;
+    overflow: hidden;
+}
+.swiper-box .shop-img{
+    width: 690rpx;
+    height: 320rpx;
+    display: block;
+}
+.media {
+    position: absolute;
+    right: 22rpx;
+    bottom: 26rpx;
+    width: 180rpx;
+    height: 46rpx;
+    line-height: 46rpx;
+    background: #000;
+    z-index: 1000;
+    font-size: 26rpx;
+    opacity: .6;
+    border-radius: 23rpx;
+    overflow: hidden;
+    display: flex;
+    text-align: center;
+}
+.media .media-icon {
+    width: 26rpx;
+    height: 22rpx;
+}
+.media .img-num{
+    flex: 1;
+    border-right: .5rpx solid #fff;
+    color: #FFFFFF;
+}
+.media .vid-num{
+    color: #FFFFFF;
+    flex: 1;
+}
+/* <!-- 店铺营业信息 2--> */
+.section-two {
+    width: 100%;
+    padding: 30rpx 0 0 30rpx;
+    box-sizing: border-box;
+    background: #fff;
+}
+.section-two .time {
+    font-size: 28rpx;
+    line-height: 40rpx;
+    color: #333333;
+    width: 100%;
+    position: relative;
+    padding-right: 20rpx;
+    padding-bottom: 30rpx;
+    box-sizing: border-box;
+}
+.section-two .time .status {
+    margin-right: 14rpx;
+    line-height: 40rpx;
+}
+.section-two .time .business-time {
+    line-height: 40rpx;
+}
+.section-two .time .time-icon {
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: middle;
+    margin-right: 12rpx;
+}
+.section-two .time .business-more {
+    width: 15rpx;
+    height: 29rpx;
+    position: absolute;
+    right: 30rpx;
+    top: 50%;
+    margin-top: -15rpx;
+}
+.section-two .time .label {
+    width: 100%;
+    padding-left: 45rpx;
+    box-sizing: border-box;
+}
+.time .label .label-item {
+    padding: 0 16rpx;
+    background: #F4F4F4;
+    font-size: 24rpx;
+    color: #999999;
+    height: 40rpx;
+    line-height: 40rpx;
+    display: inline-block;
+    border-radius: 20rpx;
+    margin-top: 20rpx;
+    margin-right: 12rpx;
+}
+/* section-thr 地址信息 */
+.section-thr {
+    width: 100%;
+    padding: 30rpx;
+    box-sizing: border-box;
+    background: #fff;
+}
+.section-thr .address-msg {
+    width: 100%;
+    /* height:  */
+}
+.address-msg .location-img {
+    width: 26rpx;
+    height: 33rpx;
+    float: left;
+    margin-right: 13rpx;
+}
+.address-msg .address {
+    width: 380rpx;
+    line-height: 38rpx;
+    font-size: 28rpx;
+    color: #333333;
+    float: left;
+}
+.address-msg .address-btn {
+    float: right;
+    width: 210rpx;
+    border-left: .5rpx solid #DBDBDB;
+    height: 60rpx;
+    text-align: right;
+}
+.address-btn .shop-phone{
+    width: 42rpx;
+    height: 60rpx;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 76rpx;
+}
+.address-btn .shop-address{
+    width: 48rpx;
+    height: 60rpx;
+    display: inline-block;
+    vertical-align: middle;
+}
+.address-btn .shop-phone image{
+    width: 42rpx;
+    height: 40rpx;
+    vertical-align: middle;
+}
+.address-btn .shop-address image{
+    width: 48rpx;
+    height: 38rpx;
+    vertical-align: middle;
+}
+/* 底部购物结算按钮 */
+.go-buy {
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    padding: 20rpx 30rpx;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow:0px -2rpx 5rpx 1rpx rgba(153,153,153,0.1);
+    background: #fff;
+}
+.go-buy .buy-btn {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: #E85352;
+    border-radius: 8rpx;
+}
+.go-buy .buy-btn .buy-img {
+    width: 35rpx;
+    height: 33rpx;
+    vertical-align: middle;
+}
+.go-buy .buy-btn .buy-desc {
+    height: 80rpx;
+    line-height: 80rpx;
+    vertical-align: middle;
+    font-size: 32rpx;
+    color: #fff;
+    margin-left: 15rpx;
+}
+/* 店铺活动 section-fou */
+.section-fou {
+    width: 100%;
+    background: #fff;
+    padding: 30rpx 30rpx 0rpx 30rpx;
+    box-sizing: border-box;
+}
+/* menu btn */
+.menu-btn {
+    width: 570rpx;
+    height: 55rpx;
+    line-height: 55rpx;
+    display: flex;
+    background: #fff;
+    position: relative;
+}
+.menu-btn .btn-item {
+    width: 33.33%;
+    font-size: 32rpx;
+    color: #333333;
+    height: 45rpx;
+    line-height: 45rpx;
+}
+/* btn active */
+.menu-btn .item-active {
+    font-weight: bold;
+    color: #E85352;
+}
+/* 下划线 */
+.menu-btn .select-line {
+    height: 4rpx;
+    width: 22%;
+    left: 0%;
+    background-color: #E85352;
+    position: absolute;
+    bottom: 0;
+    transition:left 200ms;
+    border-radius: 4rpx 4rpx 0 0;
+}
+/* 店铺活动 */
+.menu-section {
+    width: 100%;
+    background: #fff;
+    padding-top: 30rpx;
+    box-sizing: border-box;
+}
+/* /满减 */
+.full-reduction {
+    width: 100%;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.full-reduction .reduction-name {
+    display: inline-block;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    border-radius: 5rpx;
+    opacity: 0.7227;
+    padding: 0 12rpx;
+    background: linear-gradient(47deg,rgba(237,76,0,1) 0%,rgba(236,16,16,1) 100%);
+    margin-right: 20rpx;
+    vertical-align: middle;
+    margin-bottom: 15rpx;
+    position: relative;
+}
+.reduction-name .circle-l{
+    width: 5rpx;
+    height: 10rpx;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -5rpx;
+    border-radius: 0 5rpx 5rpx 0;
+}
+.reduction-name .circle-r{
+    width: 5rpx;
+    height: 10rpx;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -5rpx;
+    border-radius: 5rpx 0 0 5rpx;
+}
+.full-reduction .reduction-item {
+    display: inline-block;
+    height: 40rpx;
+    line-height: 40rpx;
+    font-size: 22rpx;
+    color: #E85352;
+    border-radius: 5rpx;
+    border: .5rpx solid rgba(232,83,82,1);
+    padding: 0 8rpx;
+    margin-right: 20rpx;
+    vertical-align: middle;
+    margin-bottom: 15rpx;
+}
+/* 优惠券 */
+.coupons {
+    padding: 0 10rpx 10rpx 10rpx;
+    box-sizing: border-box;
+}
+.coupon {
+    width: 660rpx;
+    height: 190rpx;
+    position: relative;
+}
+.coupon .coup-bg {
+    width: 100%;
+    height: 190rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+.coupon .coup-txt {
+    width: 100%;
+    height: 190rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    padding-right: 150rpx;
+    box-sizing: border-box;
+}
+.coupon .coup-content {
+    width: 510rpx;
+    height: 190rpx;
+    padding: 40rpx 0;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.coup-content .coup-title{
+    width: 156rpx;
+    overflow: hidden;
+    font-weight: 600;
+    border-right: .5rpx solid #DBDBDB;
+    display: inline-block;
+    vertical-align: middle;
+}
+.coup-title .num {
+    width: 100%;
+    text-align: center;
+    font-size: 40rpx;
+    line-height: 56rpx;
+    height: 56rpx;
+    color: #FD4D26;
+    margin-bottom: 5rpx;
+}
+.coup-title .desc {
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    line-height: 42rpx;
+    height: 42rpx;
+    color: #FD4D26;
+}
+.coup-content .coup-details {
+    display: inline-block;
+    width: calc(100% - 160rpx);
+    padding-left: 15rpx;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+.coup-details .reduce {
+    width: 100%;
+    height: 42rpx;
+    line-height: 42rpx;
+    font-size: 30rpx;
+    color: #333333;
+    margin-bottom: 2rpx;
+}
+.coup-details .fill {
+    width: 100%;
+    height: 33rpx;
+    line-height: 33rpx;
+    font-size: 24rpx;
+    color: #E85352;
+    margin-bottom: 4rpx;
+}
+.coup-details .time {
+    width: 100%;
+    height: 30rpx;
+    line-height: 30rpx;
+    font-size: 22rpx;
+    color: #999999;
+}
+.coup-txt .coup-img {
+    position: absolute;
+    right: 0;
+    top: 20rpx;
+    z-index: 1001;
+    width: 150rpx;
+    height: 150rpx;
+}
+.coup-more {
+    line-height: 80rpx;
+    height: 80rpx;
+    width: 100%;
+    text-align: center;
+    font-size: 28rpx;
+    color: #E85352;
+}
+.coup-more .coup-more-icon {
+    width: 14rpx;
+    height: 24rpx;
+    vertical-align: middle;
+}
+/* 更多推荐 */
+.more-shop {
+    padding: 30rpx;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+}
+.more-shop .title{
+    font-size: 32rpx;
+    line-height: 45rpx;
+    color: #333333;
+    display: block;
+    width: 100%;
+}
+.more-shop .shop-list{
+    margin-top: 5rpx;
+}
+.more-shop .shop-list .shop-list-item{
+    padding: 30rpx 0;
+    box-sizing: border-box;
+}
+.shop-list-item .item-img{
+    width: 160rpx;
+    height: 160rpx;
+    display: block;
+    float: left;
+}
+.shop-list-item .content{
+    width: 510rpx;
+    height: 160rpx;
+    float: right;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+}
+.shop-list-item .content .shop-name{
+    width: 510rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    font-size: 32rpx;
+    color: #333333;
+    margin-bottom: 14rpx;
+    display: block;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.shop-list-item .content .start{
+    width: 100%;
+    height: 33rpx;
+    line-height: 33rpx;
+    font-size: 24rpx;
+    color: #FFD100;
+    margin-bottom: 14rpx;
+}
+.shop-list-item .content .desc{
+    width: 100%;
+    height: 33rpx;
+    line-height: 33rpx;
+    font-size: 24rpx;
+    color: #999999;
+    overflow: hidden;
+}
+.shop-list-item .content .desc .cat{
+    width: 130rpx;
+    height: 33rpx;
+    line-height: 33rpx;
+    float: left;
+    font-size: 24rpx;
+    color: #999999;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.shop-list-item .content .desc .address{
+    width: 230rpx;
+    height: 33rpx;
+    line-height: 33rpx;
+    float: right;
+    font-size: 24rpx;
+    color: #999999;
+    text-align: right;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.shop-list-item .content .desc .distance{
+    height: 33rpx;
+    line-height: 33rpx;
+    float: right;
+    font-size: 24rpx;
+    color: #999999;
+    margin-left: 10rpx;
+}

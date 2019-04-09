@@ -1,0 +1,20 @@
+<!--pages/chooseactivi/chooseactivi.wxml-->
+<view class='body'>
+  <view class='pages'>
+     <view class='checed'>
+     <label class='label {{flag?"labered":""}}'> 
+       <image src='{{flag?"../../image/shopDetails/xuanzong.png":""}}'></image>
+     </label>
+     <view class='checedr'>
+        <image src='../../image/shopDetails/zk.png'></image>
+        <text class='checedrmoney'>100-20元 优惠价</text>
+        <view class='checedmoney'>
+          <text>满100-20元优惠活动</text>
+          <text>周一到周日</text>
+          <text>免预约</text>
+         </view>
+       </view>
+    </view> 
+  </view>  
+</view>
+    

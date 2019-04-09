@@ -1,0 +1,161 @@
+//过滤时间
+var formatDate1 = function (timestamp, option) {
+    var date = getDate(parseInt(timestamp));
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate()
+    var hour = function () {
+        if (date.getHours() < 10) {  //补‘0’
+            return '0' + date.getHours()
+        }
+        return date.getHours();
+    }
+    var minute = function () {
+        if (date.getMinutes() < 10) {
+            return '0' + date.getMinutes()
+        }
+        return date.getMinutes();
+    }
+    var second = function () {
+        if (date.getSeconds() < 10) {
+            return '0' + date.getSeconds()
+        }
+        return date.getSeconds();
+    }
+    if (option == 'notime') {  //不需要时间
+        return year + '-' + month + '-' + day;
+    } else if (option == 'noyear') {
+        return month + '.' + day 
+    } else if (option == 'dayPoint') {
+        return year + '.' + month + '.' + day;
+    }
+    return year + '/' + month + '/' + day + ' ' + hour() + ':' + minute();
+}
+//时间格式
+var formatDay = function (time) { 
+    if (!time) { return time; } 
+    if ((isNumber(time) ? time.toString().length : time.length) === 10) { time = time * 1000; } 
+    let date = new Date(time); 
+    let year = date.getFullYear(), month = date.getMonth() + 1, day = date.getDate(); 
+    return year + '.' + (month < 10 ? '0' + month : month) + '.' + (day < 10 ? '0' + day : day); 
+};
+//过滤超过千
+var formatThousand = function (distance, option) {
+    if (distance < 1000){
+        return distance.toFixed(0);
+    } else if (distance >= 1000 ){
+        return ((distance / 1000).toFixed(2)) + 'k';
+    }
+}
+//
+var parseStatus=function(status) {
+  if (parseInt(status) == 0) {
+    return '已结束';
+  } else if (parseInt(status) == 1) {
+    return '抢购中';
+  } else if (parseInt(status) == 2) {
+    return '即将开始';
+  }
+}
+//渲染取整
+var parseInts = function (seckillSale, seckillNumber) {
+  var number = parseInt(seckillSale) / (parseInt(seckillNumber) + parseInt(seckillSale))
+  var num = number * 100;
+  return num.toFixed(2)
+}
+//  数字固定两位小数
+var numberFormat = function (value) {
+    let num = parseFloat(value);
+    return num.toFixed(2);
+}
+// 过滤器
+var filters = {
+    //此处2为保留两位小数
+    toFix: function (x) {
+        var f = parseFloat(x);
+        if (isNaN(f)) {
+            return false;
+        }
+        var f = Math.round(x * 100) / 100;
+        var s = f.toString();
+        var rs = s.indexOf('.');
+        if (rs < 0) {
+            rs = s.length;
+            s += '.';
+        }
+        while (s.length <= rs + 2) {
+            s += '0';
+        }
+        return s;
+    }
+}
+// 订单状态
+var formatterOrderStatus = function (status) {
+    status = parseInt(status);
+    switch (status) {
+        case 0: return '等待付款';
+        case 1: return '待发货';
+        case 2: return '已取消';
+        case 3: return '已关闭';
+        case 4: return '待收货';
+        case 5: return '待评价';
+        case 6: return '已完成';
+    }
+}
+// week
+var formatterWeek = function (week) {
+    item = parseInt(week);
+    switch (item) {
+        case 1: return '周一';
+        case 2: return '周二';
+        case 3: return '周三';
+        case 4: return '周四';
+        case 5: return '周五';
+        case 6: return '周六';
+        case 7: return '周日';
+    }
+}
+//包含字符串
+var containsString = function (long, short) { return long.indexOf(short) !== -1; }
+// 图片裁剪
+var parseImg = function (img, option) {
+    if (!img) return img;
+    let src = img;
+    if (!containsString(img, 'http')) {
+        src = 'https://globmate.oss-cn-hangzhou.aliyuncs.com/' + img;
+        if (option) {
+            if (option.x || option.y) {
+                if (containsString(src, '?')) {
+                    src = src + '&x-oss-process=image/resize,m_fill';
+                } else {
+                    src = src + '?x-oss-process=image/resize,m_fill';
+                }
+                if (option.x) {
+                    src = src + ',w_' + option.x;
+                }
+                if (option.y) {
+                    src = src + ',h_' + option.y;
+                }
+            }
+            if (option.copy) {
+                if (containsString(src, '?')) {
+                    src = src + '&copy';
+                } else {
+                    src = src + '?copy';
+                }
+            }
+        }
+    }
+    return src;
+}
+module.exports = {
+    formatDate1: formatDate1,
+    formatThousand: formatThousand,
+    parseStatus: parseStatus,
+    parseInts: parseInts,
+    toFix: filters.toFix,
+    formatterOrderStatus: formatterOrderStatus,
+    parseImg: parseImg,
+    formatterWeek: formatterWeek,
+    formatDay: formatDay
+};

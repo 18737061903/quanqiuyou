@@ -1,0 +1,222 @@
+/* pages/pay/pay.wxss */
+.body{
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  background:  #F4F4F4;
+  padding: 20rpx 20rpx;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+.header{
+  width: 100%;
+  height: 154rpx;
+  line-height: 154rpx;
+  background: #fff;
+  border-radius:12rpx;
+}
+.header .image{
+  margin-top: 20rpx;
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 50%;
+  float: left;
+  margin-right: 20rpx;
+}
+.header image{
+   width: 74rpx;
+  height: 74rpx;
+  border-radius: 50%;
+}
+.Name{
+  font-size: 34rpx;
+}
+.headertext{
+  float:left;
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+  font-size: 32rpx;
+}
+.mainmoney{
+  border-radius:12rpx;
+  margin-top: 20rpx;
+  width: 710rpx;
+  /* height:auto; */
+  background: #fff;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+.paymoney{
+  font-size: 32rpx;
+  color:  #666666 ;
+  width: 100%;
+  display: block;
+}
+.moneyinput{
+  /* margin-top: 40rpx; */
+  height: 112rpx;
+  padding: 13rpx 0;
+  box-sizing: border-box;
+  /* padding-bottom: 20rpx; */
+  width: 100%;
+  border-bottom: solid  #DBDBDB  .5rpx;
+}
+.affirm{
+    float: right;
+    font-size: 26rpx;
+    width: 130rpx;
+    height: 60rpx;
+    background: #E85352;
+    text-align: center;
+    color: #fff;
+    line-height: 60rpx;
+    border-radius: 6rpx;
+    margin-top: 12rpx;
+}
+.moneyinput text{
+  float:left;
+  font-size: 60rpx;
+  color: #333333;
+}
+.moneyinput input{
+    width: 400rpx;
+    height: 86rpx;
+    font-size: 80rpx;
+    line-height: 86rpx;
+    float: left;
+   /* font-weight: bold */
+}
+.moneypoints{
+  width: 100%;
+  margin-top: 20rpx;
+  padding-bottom: 45rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+.moneypoints text:first-child text{
+ color: #E85352 
+}
+/* .choose{
+  margin-top: 100rpx;
+} */
+.choosetext{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.checed{
+  width: 100%;
+  height:130rpx;
+  margin-top: 34rpx;
+}
+
+.checedr{
+  position: relative;
+  width: 100%;
+  height:  130rpx;
+  float:left;
+  overflow: hidden;
+}
+.checedr image{
+  float: left;
+  width: 210rpx;
+  height: 130rpx;
+ }
+ .checedrmoney{
+   position: absolute;
+   font-size: 34rpx;
+   color: #ED8303;
+   display: block;
+   width: 150rpx;
+   left: 30rpx;
+   top: 20rpx;
+   font-weight: bold;
+ }
+ .yhj {
+     font-size: 28rpx;
+     font-weight: bold;
+ }
+ .mon {
+     display: block;
+ }
+ .checedmoney{
+   width: 100%;
+   height: 130rpx;
+   margin-left:225rpx; 
+   padding-top: 15rpx;
+   box-sizing: border-box;
+ }
+  .checedmoney text:first-child{
+    width: 100%;
+    font-size: 30rpx;
+    display: inline-block;
+  }
+  .checedmoney text:nth-child(2){
+    margin-top:10rpx; 
+    font-size: 26rpx;
+    color: #999999;
+    display: inline-block;
+    border-right: 2rpx solid #DBDBDB;
+    padding-right: 20rpx;
+  }
+  .checedmoney text:nth-child(3){
+     display: inline-block;
+     margin-top:10rpx; 
+     margin-left: 20rpx;
+    font-size: 26rpx;
+    color: #999999
+  }
+   .imgs{
+     position: absolute;
+     top: 45rpx;
+     right: 18rpx;
+     width: 18rpx;
+     height: 31rpx;
+   }
+  .imgs image{
+    width: 100%;
+    height: 100%
+  }
+
+  .footer{
+    margin-top:20rpx;
+    padding: 20rpx 20rpx;
+    width: 100%;
+    height: 126rpx;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 6rpx;
+  }
+  .footer text:first-child{
+     line-height: 80rpx;
+     font-size: 32rpx;
+  }
+  .footer text:first-child text:first-child {
+      font-size: 28rpx;
+      color: #E85352;
+  }
+  .footer text:first-child text:first-child text:first-child{
+       font-size: 40rpx;
+  }
+ .but{
+        margin-top: 180rpx; 
+        background: #E85352;
+        color: #fff;
+        width: 690rpx; 
+        height: 88rpx;
+        line-height: 88rpx;
+   }
+.pleasemone{
+       line-height: 80rpx;
+       font-size: 28rpx;
+       color: #666666;  
+}
+.affirmactivi{
+    background: rgba(232, 83, 82, 0.2);
+}

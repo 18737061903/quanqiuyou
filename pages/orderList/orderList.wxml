@@ -1,0 +1,86 @@
+<!--pages/orderList/orderList.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<view class='all' id='all'>
+    <!-- menu btn-->
+    <view class='menu-btn'>
+        <view bindtap='chooseMenu' class="btn-item {{index == select ? 'item-active' : ''}}" wx:for="{{menu}}" wx:key="{{index}}" data-index='{{index}}'>{{item.title}}</view>
+        <!-- 下划线跟随 -->
+        <view class="select-line" style="left: {{select * 25 + 7 + '%'}}" ></view>
+    </view>
+    <!-- line -->
+    <view class='load-more'></view>
+    <view class='line'></view>
+    <!-- orderList -->
+    <view class='order-list'>
+        <view wx:for-index="childIndex" wx:for="{{menu[select].list}}" wx:key="childIndex" wx:for-item="orderItem" class='order-item'>
+            <!-- 线上普通商品订单 -->
+            <view wx:if="{{orderItem.type == 1}}" class='xs-order'>
+                <!-- top msg 店铺信息-->
+                <view class='top-box clearfix'>
+                    <image lazy-load class='shop-img' src="{{orderItem.shopImg ? ossHttp + orderItem.shopImg : '../../image/orderList/xs_shop_blank.png'}}"></image>
+                    <view class='shop-desc omit'>
+                        <text class='shop-name'>{{orderItem.shopName}}</text>
+                        <image lazy-load class='more-right' src="../../image/orderList/right_more.png"></image>
+                    </view>
+                    <view class='express'>{{filter.formatterOrderStatus(orderItem.orderStatus)}}</view>
+                </view>
+                <!-- mid msg 商品信息-->
+                <view wx:for-index="goodsIndex" wx:for="{{orderItem.info}}" wx:key="goodsIndex" wx:for-item="goodsItem" class='mid-box'>
+                    <image lazy-load class='goods-img' src="{{ossHttp + goodsItem.img}}"></image>
+                    <view class='goods-desc'>
+                        <text class='goods-name twomit'>{{goodsItem.goodsName}}</text>
+                        <view class='goods-line'></view>
+                        <text class='goods-sku omit'>{{goodsItem.specName}}</text>
+                    </view>
+                </view>
+                <view wx:if="{{goodsIndex < orderItem.info.length - 1}}" class='msg-line'></view>
+                <!-- bot msg 价格信息 -->
+                <view wx:if="{{orderItem.type == 1}}" class='bot-box clearfix'>
+                    <text class='order-price'>{{orderItem.payPrice}}</text>
+                    <text class='symbol'>￥</text>
+                    <text>合计:</text>
+                    <text style='margin-right: 20rpx;'>共{{orderItem.totalNumber}}件商品</text>
+                </view>
+            </view>
+            <view class='line-bor'></view>
+            <!-- btn -->
+            <view class='btn-box clearfix'>
+                <view 
+                    wx:if="{{orderItem.orderStatus == orderStatus.unpay}}" 
+                    class='btn-item main-btn' 
+                    style='margin-left: 20rpx;'>
+                    立即支付</view>
+                <view 
+                    wx:if="{{orderItem.orderStatus == orderStatus.receive}}" 
+                    class='btn-item main-btn' 
+                    style='margin-left: 20rpx;'>
+                    确认收货</view>
+                <view 
+                    wx:if="{{orderItem.orderStatus == orderStatus.unpay}}" 
+                    class='btn-item cancel-btn'>
+                    取消订单</view>
+                <view 
+                    wx:if="{{orderItem.type == 1 && orderItem.orderStatus >= orderStatus.receive}}" 
+                    class='btn-item cancel-btn'>
+                    查看物流</view>
+                <view 
+                    wx:if="{{orderItem.orderStatus == orderStatus.complete || orderItem.orderStatus == orderStatus.cancel || orderItem.orderStatus == orderStatus.close}}" 
+                    class='btn-item cancel-btn' 
+                    style='margin-left: 20rpx;'
+                    bindtap='deleteOrder'
+                    data-childIndex='{{childIndex}}'>
+                    删除订单</view>
+                <view 
+                    wx:if="{{orderItem.orderStatus >= orderStatus.received}}" 
+                    class='btn-item cancel-btn'>
+                    查看发票</view>
+            </view>
+            <view class='line'></view>
+        </view> 
+    </view>
+    <!-- 订单缺省 -->
+    <view wx:if="{{menu[select].list.length === 0}}" class="blank">
+        <image lazy-load class='order-blank' src='../../image/orderList/order_blank.png'></image>
+        <text class='blank-desc'>暂无订单记录，去商城逛逛～</text>
+    </view>
+</view>

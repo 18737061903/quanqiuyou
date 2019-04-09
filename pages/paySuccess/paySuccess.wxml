@@ -1,0 +1,33 @@
+<!--pages/paySuccess/paySuccess.wxml-->
+<view class='main'>
+    <view class='top'>
+        <image lazy-load class='pay-img' src='../../image/pay/pay_complete.png'></image>
+        <text class='pay-result'>支付成功</text>
+        <text class='pay-money-box'><text class='symbol'>￥</text><text class='pay-money'>{{payPrice}}</text></text>
+        <!-- 您已经成功在欧舒丹甜蜜商店消费了100元 -->
+        <text class='buy-box'>您已经成功在{{shopName}}商店消费了{{payPrice}}元</text>
+        <!-- 全球友平台为您节省了20元 -->
+        <text class='we-save'>全球友平台为您节省了0元</text>
+        <view class='dash-line'></view>
+        <view class='save-box clearfix'>
+            <!-- 已经累计为您节省了 -->
+            <text class='save'></text>
+            <!-- 1334元 -->
+            <text class='save-money'></text>
+        </view>
+        <view class='left-point'></view>
+        <view class='right-point'></view>
+    </view>
+    <view class='praise'>
+        <view class='item'>
+            <view bindtap='badReview' class='item-box'>
+                <image lazy-load src='../../image/pay/cai.png'></image>
+            </view>
+        </view>
+        <view class='item'>
+            <view bindtap='goodReview' class='item-box'>
+                <image lazy-load src='../../image/pay/zan.png'></image>
+            </view>
+        </view>
+    </view>
+</view>

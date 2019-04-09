@@ -1,0 +1,3 @@
+<!--pages/catGoods/catGoods.wxml-->
+<scroll-view class='all' scroll-y>
+</scroll-view>

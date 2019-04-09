@@ -1,0 +1,27 @@
+<!--pages/address/address.wxml-->
+<view class='page'>
+    <view class='peson-msg' style='left:{{item.offsetX}}rpx;' bindtap='setDefault' bind:touchstart="dStart" bind:touchmove="dMove" bind:touchend="dEnd" wx:for="{{addressList}}" wx:key data-index='{{index}}'>
+      <view class='msg-top' data-index='{{index}}'>
+        <text data-index='{{index}}' class='omit'>收货人：{{item.name}}</text>
+        <text data-index='{{index}}'>{{item.phone}}</text>
+      </view>
+      <view class='msg-up' data-index='{{index}}'>
+        <text data-index='{{index}}'>收货地址：{{item.address+item.detail}}</text>
+      </view>
+      <view class='img-lefe' data-id='{{item.id}}' >
+        <image lazy-load wx:if="{{item.isDefault==1}}" 
+src='../../image/locallife/xuanzhong.png' catchtap='bindtapisDefault' data-id='{{item.id}}' ></image> 
+        <image lazy-load wx:if="{{item.isDefault==0}}" src='../../image/locallife/xuanzhongkong.png' catchtap='bindtapisDefault' data-id='{{item.id}}'></image> 
+      </view>
+      <view class='img-right'  catchtap='navioNewaddress'>
+        <image lazy-load src='../../image/locallife/bianji.png' data-id='{{item.id}}' catchtap='navioNewaddress' data-index='{{index}}'></image>          </view>
+      <view  catchtap='deleteAddress' class='delete' data-id='{{item.id}}'>
+        <text  catchtap='deleteAddress' data-id='{{item.id}}'>删除</text> 
+      </view>
+    </view> 
+    <view  bindtap='navioNewaddress' class='newaddress'>+新增地址</view>
+    <view wx:if="{{showImg}}" class='loding'>
+      <view> <image lazy-load src='../../image/locallife/newaddress.png'></image></view>
+      <text>暂无收货地址，快去新建一个吧~</text>
+    </view>
+</view>

@@ -1,0 +1,35 @@
+<!--views/binding/binding.wxml-->
+<view>
+    <view>
+        <view class="top">
+            <image lazy-load src='../../image/login/register.png'></image>
+        </view>
+        <view class="main">
+            <view class="input-box">
+                <view class="phone">
+                    <image lazy-load class='icon' src='../../image/login/phone.png'></image>
+                    <input class="input" type="number" bindinput='getPhonevalue' maxlength="11" placeholder="请输入手机号"></input>
+                </view>
+                <button  class="codeBtn"  bindtap='getVerificationCode' disabled='{{disabled}}'>{{codename}}</button>
+                <view class="code">
+                    <image lazy-load class="icon" src='../../image/login/code.png'></image>
+                    <input class="input" bindinput='getCodevalue'   placeholder="请输入验证码"></input>
+                </view>
+            
+                <view wx:if="{{isNew}}" class="password">
+                    <image lazy-load class="icon" src='../../image/login/password.png'></image>
+                    <view  class="right" bindtap='eyes'>
+                        <image lazy-load wx:if="{{isShow}}" class="eyes" src='../../image/login/secure.png'></image>
+                        <image lazy-load wx:else class="eye" src='../../image/login/unSecure.png'></image>
+                    </view>
+                    <input class="input" bindinput='getPasswordvalue' type="{{show}}" placeholder="请输入密码"></input>
+                </view>
+            </view>
+            <view class="protocol">
+                *我已阅读并同意注册协议
+                <navigator url='../protocol/protocol' class="btn"> 点击查看协议</navigator>
+            </view>
+            <Button  bindtap="submit" class="submit">绑定</Button>
+        </view>
+    </view>
+</view>

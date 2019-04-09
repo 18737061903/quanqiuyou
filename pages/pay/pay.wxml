@@ -1,0 +1,48 @@
+<!--pages/pay/pay.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<!-- 支付 -->
+<view class='body'>
+  <view class='header'>
+   <text class='headertext'>收款方:</text>
+   <view class='img'>
+     <view class='image'>
+       <image lazy-load src='{{http+headPic}}'></image>
+     </view>
+     <text class='Name'>{{nickName}}</text>
+   </view>
+  </view>
+  <!-- 消费金额 -->
+  <view class='mainmoney clearfix'>
+     <text class='paymoney'>消费金额: </text>
+     <view class='moneyinput clearfix' ><text>￥</text><view class='affirm  {{moneytrue?"":"affirmactivi"}}' bindtap='moneytrues'> 确认</view> <input placeholder='请输入您要付款的金额'  placeholder-style='font-size:40rpx;color:#CBCBCB' bindinput='moneyinput' type='digit'></input>
+     </view>
+     <view class='moneypoints'>
+       <text wx:if="{{moneyreduction}}">已有{{getPayResult.credit}}积分 <text>可抵扣{{getPayResult.scalePrice * 0.01}}元</text> </text>
+     </view>
+     <view class='choose'>
+       <text class='choosetext'>满减优惠:</text>
+       <view class='checed' wx:if="{{moneyreduction}}">
+        <view class='checedr' >
+          <image lazy-load src='../../image/shopDetails/mj.png'></image>
+          <text class='checedrmoney'><text class='mon'>{{getPayResult.subtractFull}}-{{getPayResult.subtractCut}} 元</text><text class='yhj'>优惠价</text></text>
+          <view class='checedmoney'>
+            <text>满{{getPayResult.subtractFull}}-{{getPayResult.subtractCut}}元优惠活动</text>
+            <text>{{filter.formatDate1(getPayResult.startTime
+*1000,'notime')}}至{{filter.formatDate1(getPayResult.endTime*1000,'notime'
+)}}</text>
+            <text>免预约</text>
+           </view>
+          </view>
+         <view>
+        </view>
+       </view>
+       <view wx:else class='pleasemone'> <text>{{plaeseinput}}</text>  </view>
+     </view>
+  </view>
+  <!-- 支付金额 -->
+  <view class='footer' wx:if="{{paymoney}}">
+    <text>实际支付金额: <text>￥<text>{{getPayResult.resultPrice}}</text></text> </text>
+  </view>
+  <!-- 支付按钮 -->
+  <button class='but {{payment?"":"affirmactivi"}}' bindtap='pay' >付款</button>
+</view>

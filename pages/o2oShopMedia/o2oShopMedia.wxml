@@ -1,0 +1,25 @@
+<!--pages/o2oShopMedia/o2oShopMedia.wxml-->
+<view class='all'>
+    <view class='top'>
+        <view class='menu'>
+            <view bindtap='chooseMenu' class="btn-item {{index == select ? 'item-active' : ''}}" wx:for="{{menu}}" wx:key="{{index}}" data-index='{{index}}'>{{item.title}}</view>
+        </view>
+    </view>
+    <view class='none'></view>
+    <!-- 图片 -->
+    <view class='img-list list clearfix' wx:if="{{select == 0}}">
+        <image 
+            lazy-load
+            bindtap="previewImage" data-path='{{ossHttp + item}}' 
+            wx:for="{{imgList}}" wx:key="{{index}}" 
+            class='img' src="{{ossHttp + item}}">
+        </image>
+    </view>
+    <!-- 视频 -->
+    <view class='video-list list' wx:if="{{select == 1}}">
+        <video
+            class='video' src="{{ossHttp + item}}"
+            wx:for="{{videoList}}" wx:key="{{index}}" >
+        </video>
+    </view>
+</view>

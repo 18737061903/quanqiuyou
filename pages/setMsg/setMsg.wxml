@@ -1,0 +1,40 @@
+<!--pages/setMsg/setMsg.wxml-->
+<view class='page'>
+  <view class='settop'>
+    <view class='common'>
+      <text>个人信息</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common'>
+      <text>手机号</text>
+      <view class='phone'></view>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common' bindtap='addressSet'>
+      <text>地址管理</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common'>
+      <text>发票资质</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+  </view>
+  <view class='setup'>
+    <view class='common'>
+      <text>通知管理</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common'>
+      <text>联系客服</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common'>
+      <text>反馈建议</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+    <view class='common'>
+      <text>关于全球友</text>
+      <image lazy-load src='../../image/setMsg/more_right.png'></image>
+    </view>
+  </view>
+</view>

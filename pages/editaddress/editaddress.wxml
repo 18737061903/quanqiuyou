@@ -1,0 +1,42 @@
+<!--pages/editaddress/editaddress.wxml-->
+<view class="page" >
+        <view class="address-name common">
+            <text >收货人</text>
+            <input bindinput="addressName" maxlength="-1" placeholder="请填写收货人姓名" type="text" value="{{address.name}}" placeholder-class="placeholder" ></input>
+        </view>
+         <view class="address-phone common">
+            <text >联系方式</text>
+            <input bindinput="addressPhone" maxlength="-1" placeholder="请填写联系电话" type="number" value="{{address.phone}}" placeholder-class="placeholder" ></input>
+        </view>
+         <view class="address-choose common">
+            
+              <picker
+                mode="region"
+                bindchange="addressChoose"
+                value="{{address.address}}"
+                custom-item="{{customItem}}"
+              >
+                  <view class="address-picker">
+                   <text >所在地区</text> {{address.address[0]}} {{address.address[1]}} {{address.address[2]}} 
+                    <view class='picker-img'>
+                        <image lazy-load src='../../image/editAddress/creater.png' ></image>
+                    </view>
+                  </view>
+              </picker>
+             
+        </view>
+        <view class="address-detail common">
+            <text >详细地址</text>
+            <input bindinput="addressDetail" maxlength="-1" placeholder="请填写详细地址" type="text" value="{{address.detail}}" placeholder-class="placeholder" ></input>
+        </view>
+        <view class="address-default common">
+            <text >设置默认地址</text>
+            <switch  color="rgba(232, 83, 82, 1)" checked="{{address.isDefault}}" bindchange="switch1Change"/>
+        </view>
+        <view class='address-delet' bindtap='addressDelet' wx:if="{{address.id}}">
+          <text>删除</text>
+        </view>
+        <view class='address-btn' bindtap='addressBtn'>
+          <text>保存</text>
+        </view>
+</view>

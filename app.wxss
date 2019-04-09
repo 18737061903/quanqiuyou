@@ -1,0 +1,79 @@
+/**app.wxss**/
+/* wxParse的样式表 */
+@import "/wxParse/wxParse/wxParse.wxss";
+view{
+    color:#333333;
+}
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200rpx 0;
+    box-sizing: border-box;
+} 
+
+/*隐藏滚动条*/
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+/* 公共样式 */
+/* z-index: 999 1000 1001 n++; */
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+.omit {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.twomit{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.sun-table {
+    display: table;
+    width: 100%;
+}
+.sun-table-row {
+    display: table-row;
+    vertical-align: middle;
+}
+.sun-table-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+.sun-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.sun-center-y {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+.sun-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.sun-input-none {
+    border: 0;
+    -webkit-appearance: none;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}

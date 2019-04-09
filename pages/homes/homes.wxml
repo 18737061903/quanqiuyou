@@ -1,0 +1,380 @@
+<!--pages/homes/homes.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<view class="body">
+    <!-- ------------------------------头部导航 --------------------------------->
+    <view class='header'>
+        <!-- 隐藏菜单按钮 -->
+        <view bindtap='showMyModal' class='menu'>
+            <image class='menu-img' src='../../image/locallife/menu.png'></image>
+        </view>
+        <!-- 扫码按钮 -->
+        <view bindtap='scanCode' class='yard'>
+            <image class='yard-img' src='../../image/locallife/yard.png'></image>
+        </view>
+        <!-- // "enablePullDownRefresh": true -->
+        <!-- 选项卡btn -->
+        <view class='tab-btn'>
+            <view bindtap="selected1" class="{{selected1 ? 'tab-item-active' : 'tab-item'}}">爆品
+               <view class='linenav' wx:if="{{selected1}}"></view>
+            </view>
+            <view bindtap="selected2" class="{{selected2 ? 'tab-item-active' : 'tab-item'}}">本地
+               <view class='linenav' wx:if="{{selected2}}"></view>
+            </view>
+        </view>
+    </view>
+    <!-- -----------------------------------爆品模块-------------------------------- -->
+    <view style='padding: 0;' class="{{selected1?'show':'hidden'}}"  >
+        <view class='mall' style='padding-top={{mallTop}}rpx'>
+           <!--悬浮购物车  -->
+           <view class='fiexd_cat'>
+              <view bindtap='myCart' class='fiexd_cat-imgt'>
+                <image src='../../image/mall/cart.png'></image>
+              </view>
+              <view class='fiexd_cat-imgu'>
+                <image src='../../image/locallife/goodsmsg.png'></image>
+              </view>
+           </view>
+           <!-- 搜索框 -->
+           <view class='search' wx:if="{{isSearch}}">
+              <view class='search-img'> <image src='../../image/mall/top_search.png'></image> </view>
+              <input class='search-inp' placeholder="搜索商家或商品名称" placeholder-class="placeholder-input"></input>
+           </view>
+           <!-- 横向滚动导航type==1 -->
+            <view class='scroll_nav' wx:if="{{scrollNav.type==1}}" style='top:{{iStop}}rpx'>
+              <!-- <view class='scroll_nav-img '>
+                <view class='sun-center'> <image src='../../image/locallife/search.png'></image></view>
+              </view> -->
+               <!-- <view class='line-nav'></view> -->
+              <scroll-view class='scroll_nav-view' scroll-x="true"  >
+                  <text class='scroll_nav-text {{activeNav==index?"activeNav":""}}' wx:for="{{scrollNav.detail}}" wx:for-item="navlist" wx:key="{{index}}" bindtap='navScroll' data-index='{{index}}' data-modelId='{{navlist.modelId}}'>{{navlist.name}}</text>
+              </scroll-view>
+            </view>
+            <!-- wx:for="{{modelList}}" wx:key="{{index}}" -->
+            <view class='model-list' wx:for="{{modelList}}" wx:key="{{index}}">
+              <!-- banner -->
+                <!-- 轮播模块 type4 -->
+              <view class='banner-box pad-l-r' wx:if="{{item.type==4}}"> 
+                    <swiper  autoplay="{{autoplay}}" interval="{{interval}}"  
+                    duration="{{duration}}"  circular="{{circular}}" bindchange="swiperChange" >
+                        <block wx:for="{{item.detail}}" wx:for-item="itemswiper" wx:key="{{index}}" >
+                            <swiper-item style='border-radius:6rpx;' >
+                                <image lazy-load src="{{http+itemswiper.img}}" class="slide-image" width="100%" height="295" bindtap='goPath' data-data='{{item.detail}}' data-index='{{index}}' />
+                            </swiper-item>
+                        </block>
+                    </swiper>
+                     <view class="dots">
+                        <block wx:for="{{item.detail}}" wx:key >
+                          <view class="dot{{index == currentSwiper ? ' active' : ''}}"></view>
+                        </block>
+                     </view>
+                </view>
+                <!-- <view class='margin-tw'></view> -->
+                <!-- 首页快捷入口模块 type 3  -->
+                <view  class="home_cat" wx:if="{{item.type==2}}">
+                   <view class="home_clearfixs" wx:for="{{item.detail}}" 
+                      wx:for-item="homeCatlist" wx:key="{{index}}">
+                      <view class='home_clearfixs_img'><image lazy-load src='{{http+homeCatlist.img}}'></image></view>
+                     <text class='home_clearfixs_text'>{{homeCatlist.name}}</text>
+                   </view>
+                </view>
+                <!-- 分类页快捷入口模块 type 3  -->
+                <view  class="cat" wx:if="{{item.type==3}}">
+                   <view class="clearfixs" wx:for="{{item.detail}}" 
+                      wx:for-item="catlist" wx:key="{{index}}">
+                      <view class='clearfixs_img'><image lazy-load src='{{http+catlist.img}}'></image></view>
+                     <text class='clearfixs_text'>{{catlist.name}}</text>
+                   </view>
+                </view>
+                 <!-- 双图 四图模块 type 6 7-->
+                 <view class='doubles' wx:if="{{item.type==6 || label.type == 7}}">
+                   <view class='double_img' wx:for="{{item.detail}}" wx:for-item="doubleImg" wx:key="{{index}}">
+                      <image lazy-load src='{{http+doubleImg.img}}'></image>
+                   </view>
+                 </view>
+                <!-- 馆区 -->
+                <!-- 三图区 type11 -->
+                <view class='pavilion-box pad-l-r' wx:if="{{item.type==11}}" >
+                    <view class='box-left item' ><image lazy-load src='{{http+item.detail[0].img}}' ></image></view>
+                    <view class='box-right item'>
+                        <image lazy-load src='{{http+item.detail[1].img}}' ></image>
+                        <image lazy-load src='{{http+item.detail[2].img}}'></image>
+                    </view>
+                </view>
+                <!-- 标题模块 -->
+                <!-- 单图区域 type5 -->
+                <view class='title-box' wx:if="{{item.type==5}}" wx:for="{{item.detail}}" wx:for-item="danimg" wx:key="{{index}}" >
+                    <image lazy-load class='title-img'  src='{{http+danimg.img}}' mode="widthFix"
+                    bindtap='goPath' data-data='{{item.detail}}' data-index='{{index}}'></image>
+                </view>
+                    <!-- 爆品推荐商品列表 type==10-->
+                    <view class='sec-goods-list' wx:if="{{item.type==10}}">
+                        <!--活动时间  -->
+                        <view class='time-box' >
+                          <scroll-view class='scrolltimes '  scroll-x="true">
+                            <view  wx:for="{{seckill}}" wx:for-item="timename" wx:key="{{index}}"
+                            bindtap="killItem" data-index='{{index}}' data-item='{{item}}'
+                            class='startime'>
+                              <view class='tiemtext {{active==index?"active-tiem":""}}' 
+                                data-index='{{index}}' data-item='{{item}}'>
+                                {{timename.startName}}</view>
+                              <view class='tiemstar {{active==index?"active-tiem":""}}' 
+                              data-index='{{index}}' data-item='{{item}}'>
+                              {{filter.parseStatus(timename.status)}}</view>
+                              <!-- <view class='tiemstar'>{{filter.parseStatus(timename.status)}}</view> -->
+                            </view>
+                          </scroll-view>
+                        </view>
+                        <!-- 秒杀列表 -->
+                       <view class="goods" >
+                        <view  class="goods-item clearfix" wx:for="{{kill}}" wx:for-item="secGoods" wx:key="{{index}}" bindtap='goodsDetail' data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>
+                            <view  class='goods-img-box' data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>
+                                 <text class='goods-labels' wx:if="{{userIntegral}}">可获得{{secGoods.userIntegral}}积分</text>
+                                <image lazy-load class='goods-img' src='{{http+secGoods.img}}' data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'></image>
+                            </view>
+                            <view class='goods-detail'>
+                                <text class='goods-desc' data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>{{secGoods.title}}</text>
+                                <text class='goods-label'data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>
+                                    <text class='label-item' style='width:{{filter.parseInts(secGoods.seckillSale,secGoods.seckillNumber)}}%'>
+                                    </text>
+                                       <text class='label-item_text'data-item='{{secGoods}}' data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>已秒杀{{filter.parseInts(secGoods.seckillSale,secGoods.seckillNumber)}}%
+                                    </text>
+                                </text>
+                                <view class='price-sale'>
+                                    <text class='item' data-item='{{secGoods}}'data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>
+                                        <text class='symbol'>￥</text>
+                                        <text class='price'>{{secGoods.seckillPrice}} </text>
+                                        <text class='sale'>原价￥</text>
+                                        <text class='sale'>{{secGoods.price}}</text>
+                                    </text>
+                                    <text class='item sale-item'>
+                                        <!-- <text class='sale'>销量: </text>
+                                        <text class='sale'>{{item.sale}}</text> -->
+                                    </text>
+                                </view>
+                                <button bindtap="buyNow(secGoods)" wx:if="{{clickStatus == 1&&secGoods.seckillSale/(secGoods.seckillNumber+secGoods.seckillSale) != 1}}" class="buy-btn" data-item='{{secGoods}}'data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>
+                                立即抢购</button>
+                                <button bindtap="buyNow(secGoods)" wx:if="{{secGoods.seckillSale/(secGoods.seckillNumber+secGoods.seckillSale) == 1}}" class="buy-btn-t" data-index='{{index}}' data-seckillSale='{{secGoods.seckillSale}}' data-seckillNumber='{{secGoods.seckillNumber}}'>已售完</button>
+                                <button wx:if="{{clickStatus == 0}}" class="buy-btn" >已结束</button>
+                                <button wx:if="{{clickStatus == 2}}" class="buy-btn" >即将开始</button>
+                            </view>
+                        </view>
+                        <!-- more -->
+                        <view class='seckill-more'><text class='more-txt'>查看更多</text><image lazy-load class='more-img' src='../../image/locallife/lg_rigth.png'></image></view>
+                    </view>
+                </view>
+                <!-- <view class='margin-tw-bg'></view> -->
+                <!-- 标题模块 -->
+                <!-- <view class='title-box'>
+                    <image lazy-load class='title-img'></image>
+                    <text class='title-txt'>精品推荐</text>
+                </view> -->
+                <!-- 精品推荐商品列表 type12-->
+                <view class='goods-list ' wx:if="{{item.type==12}}">
+                    <view class="goods">
+                        <view wx:for="{{item.detail}}"  wx:for-item="goodsList" class="goods-item clearfix" wx:key="{{index}}" bindtap='goLikeGoods' data-item='{{goodsList}}' data-index='{{index}}'>
+                            <view class='goods-img-box'><image lazy-load class='goods-img' src='{{http+goodsList.img}}' data-item='{{goodsList}}' ></image></view>
+                            <view class='goods-detail'data-item='{{goodsList}}'>
+                                <text class='goods-desc'data-item='{{goodsList}}'>{{goodsList.name}}</text>
+                                <text class='goods-label'data-item='{{goodsList}}'>
+                                  <text class='label-item'>可获得{{goodsList.integral}}积分</text>
+                                  <!-- <text class='label-free'>免邮</text> 
+                                  <text class='label-ticket'>优惠券</text> -->
+                                </text>
+
+                                <view class='price-sale'data-item='{{goodsList}}'>
+                                    <text class='item' data-item='{{goodsList}}'>
+                                        <text class='symbol'>￥</text>
+                                        <text class='price' data-item='{{goodsList}}'>{{goodsList.price}}</text>
+                                    </text>
+                                    <text class='item sale-item'data-item='{{goodsList}}'>
+                                        <text class='sale'>销量: </text>
+                                        <text class='sale' data-item='{{goodsList}}'>{{goodsList.sale}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                            <view class='margin-tw-bg'></view>
+                        </view>
+                    </view>
+                </view>
+                <!-- 推荐商品模块 type9-->
+                <view class='goods-list ' wx:if="{{item.type==9}}">
+                    <view class="goods">
+                        <view wx:for="{{item.detail}}"  wx:for-item="goodsList" class="goods-item clearfix" wx:key="{{index}}" bindtap='goLikeGoods' data-item='{{goodsList}}' data-index='{{index}}'>
+                            <view class='goods-img-box'><image lazy-load class='goods-img' src='{{http+goodsList.img}}' data-item='{{goodsList}}' data-index='{{index}}'></image></view>
+                            <view class='goods-detail' data-item='{{goodsList}}'>
+                                <text class='goods-desc' data-item='{{goodsList}}'>{{goodsList.name}}</text>
+                                <text class='goods-label' data-item='{{goodsList}}'>
+                                  <text class='label-item'>可获得{{goodsList.integral}}积分</text>
+                                  <!-- <text class='label-free'>免邮</text>
+                                  <text class='label-ticket'>优惠券</text> -->
+                                </text>
+                                <view class='price-sale'data-item='{{goodsList}}'>
+                                    <text class='item'data-item='{{goodsList}}'>
+                                        <text class='symbol'>￥</text>
+                                        <text class='price' data-item='{{goodsList}}'>{{goodsList.price}}</text>
+                                    </text>
+                                    <text class='item sale-item'data-item='{{goodsList}}'>
+                                        <text class='sale'>销量: </text>
+                                        <text class='sale' data-item='{{goodsList}}'>{{goodsList.sale}}</text>
+                                    </text>
+                                </view>
+                            </view>
+                            <view class='margin-tw-bg'></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        <!-- 没有更多了  -->
+        <!-- <view wx:if="{{noAll}}" class='default-s-mo'>没有更多啦~</view> -->
+        </view>
+    </view>
+    <!-- ----------------------------本地o2o------------------------------- -->
+    <view class="{{selected2?'show':'hidden'}}" >
+        <!-- 顶部导航 -->
+        <view class='o2o-nav'>
+            <image class='location-icon' src='../../image/o2oIndex/location.png'></image>
+            <text bindtap='getPosition' class='location omit'>{{address}}</text>
+            <image class='location-detail' src='../../image/o2oIndex/sm_right.png'></image>
+            <image bindtap='goSearch'  class='search-icon' src='../../image/o2oIndex/search.png'></image>
+            <image bindtap='showScreening' class='screnning-icon' src='../../image/o2oIndex/screnning.png'></image>
+        </view>
+        <!-- 间隙 -->
+        <view class='o2o-none'></view>
+        <!-- 活动列表 -->
+        <view class='activity-list'>
+            <view class='activity-item' wx:for="{{actList}}"  wx:for-item="actItem" wx:key="{{index}}">
+                <!-- 店铺信息 -->
+                <view class='shop-msg omit clearfix'>
+                    <image lazy-load class='shop-img' src='{{actItem.localeHeadPic}}'></image>
+                    <view class='shop-name omit'>{{actItem.localeName}}</view>
+                    <view class='shop-distance'>{{filter.formatThousand(actItem.distance)}}m</view>
+                    <view class='create-time'>发布时间:{{filter.formatDate1(actItem.createTime*1000,'noyear')}}</view>
+                </view>
+                <!-- 活动信息 -->
+                <view class='activity-detail'>
+                    <view class='activity-msg' data-index='{{index}}' bindtap='goAcDetails'>
+                        <!-- 活动详情 -->
+                        <image lazy-load class='activity-img' src='{{actItem.img}}'></image>
+                        <view class='activity-zz'></view>
+                        <view class='activity-desc'>
+                            <view class='activity-title omit'>{{actItem.title}}</view>
+                            <view class='activity-content omit'>{{actItem.content}}</view>
+                        </view>
+                        <!-- 活动标签 -->
+                        <view wx:if="{{actItem.type == 1}}" class='activity-label activity-label-reduce'>满减</view>
+                        <view wx:if="{{actItem.type == 2}}" class='activity-label activity-label-coup'>优惠券</view>
+                    </view>
+                    <!-- 操作 -->
+                    <view class='operation'>
+                        <image lazy-load class='hot-img' src='../../image/o2oIndex/hot.png'></image>
+                        <view class='collection'>{{actItem.hot}}</view>
+                        <image 
+                            lazy-load
+                            class='collect-img' 
+                            style='margin-left: 70rpx;' 
+                            src="{{actItem.isCollect ? ' ../../image/o2oIndex/selected.png' : '../../image/o2oIndex/un_select.png'}}">
+                        </image>
+                        <view 
+                            class='collection' 
+                            style="color: {{actItem.isCollect ? '#E85352' : '#333333'}}">
+                            {{filter.formatThousand(actItem.collectNum)}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 半屏缺省 -->
+        <view wx:if="{{actList.length && (actList.length < 3) && actPage == 1}}" class='half-default'>没有更多商家了~</view>
+        <!-- 没有活动 缺省 -->
+        <view wx:if="{{!actList.length}}" class='no-shop'>
+            <image lazy-load class="shop-blank" src='../../image/o2oIndex/no_shop.png'></image>
+            <view class='no-more-desc'>附近没有商家~</view>
+        </view>
+    </view>
+    <!-- -----------------------------更多 右侧菜单 ------------------------------>
+    <view class='moey' catchtouchmove="ture"  wx:if="{{isleft}}" bindtap='showMyHieden'>
+        <view class='moeyleft' animation="{{animationData}}"  catchtap>
+            <text class='motext'>更多</text>
+            <view class='moeytext'>
+                <image src='../../image/locallife/aside_focus.png'></image> <text>我的关注</text>
+            </view>
+            <view class='moeytext'>
+                <image src='../../image/locallife/aside_select.png'></image> <text>我的收藏</text>
+            </view>
+            <view class='moeytext'>
+                <image src='../../image/locallife/aside_release.png'></image> <text>我的发布</text>
+            </view>
+            <view bindtap='myCart' class='moeytext'>
+                <image src='../../image/locallife/aside_car.png'></image> <text>购物车</text>
+            </view>
+            <view bindtap='myOrder' class='moeytext'>
+                <image src='../../image/locallife/aside_order.png'></image> <text>我的订单</text>
+            </view>
+            <view class='moeytext'>
+                <image src='../../image/locallife/aside_msg.png'></image> <text>我的消息</text>
+            </view>
+            <view class='moeytext'>
+                <image src='../../image/locallife/aside_service.png'></image> <text>客服</text>
+            </view>
+            <view class='moeytext' bindtap='setTing'>
+                <image src='../../image/locallife/aside_setting.png'></image> <text>设置</text>
+            </view>
+        </view>
+    </view>
+    <!-- -------------------------------o2o本地生活筛选 ---------------------------->
+    <!-- 搜索 外层遮罩速度快-->
+    <view catchtouchmove="ture" class="screen-bg {{showScreen ? 'show-screen-bg' : ''}}" bindtap='hideScreening'></view>
+    <view catchtouchmove="ture" class="screen-box {{showScreen ? 'show-screen' : ''}}">
+        <!-- 内部遮罩速度慢（点击关闭用，因为外层遮罩层级低） -->
+        <view class='close-screen-bg' bindtap='hideScreening'></view>
+        <!-- 内容部分 --> 
+        <view class='content-box'>
+            <view class='screen-header'>
+                本地筛选
+                <image bindtap='hideScreening' src='../../image/o2oIndex/close.png' class='screen-close'></image>
+            </view>
+            <!-- 筛选项 -->
+            <scroll-view class='check-box' scroll-y>
+                <view class='check-type clearfix'  wx:if="{{actType.length}}">
+                    <view class='check-title'>活动类型</view>
+                    <view 
+                        style="background: {{item.status ? 'rgba(232,83,82,0.12)' : '#F8F8F8'}}; color: {{item.status ? '#E85352' : '#666'}}"           
+                        bindtap='checkActType' 
+                        class='type-item' 
+                        wx:for="{{actType}}" data-index='{{index}}' wx:key="{{index}}">
+                        {{item.title}}
+                        <image wx:if="{{item.status}}" src='../../image/o2oIndex/check.png' class='checked-icon'></image>
+                    </view>
+                </view>
+                <view class='check-type clearfix'  wx:if="{{shopType.length}}">
+                    <view class='check-title'>店铺类型</view>
+                    <view 
+                        style="background: {{item.status ? 'rgba(232,83,82,0.12)' : '#F8F8F8'}}; color: {{item.status ? '#E85352' : '#666'}}"
+                        bindtap='checkShopType' 
+                        class='type-item' 
+                        wx:for="{{shopType}}" data-index='{{index}}' wx:key="{{index}}">
+                        {{item.name}}
+                        <image wx:if="{{item.status}}" src='../../image/o2oIndex/check.png' class='checked-icon'></image>
+                </view>
+                </view>
+            </scroll-view>
+            <!-- btn -->
+            <view class='line'></view>
+            <view class='check-btn'>
+                <view bindtap='clearScreen' class='btn-item clear-all-check'>清除筛选</view>
+                <view bindtap='screenRefresh' class='btn-item screen-submit'>确定</view>
+            </view>
+        </view>
+    </view>
+    <!-- -------------------------------定位授权失败提示 ---------------------------->
+    <view wx:if="{{position}}" class="modal-mask" bindtap="positionCancel">
+        <view class="modal-dialog"> 
+            <view class="modal-title">温馨提示</view> 
+            <view class="modal-content"> 请打开定位权限! 去设置打开定位权限 </view> 
+            <view class="modal-footer"> 
+                <view class="btn-cancel" catchtap="positionCancel">取消</view> 
+                <button class="btn-confirm button-on-view" style="padding:0rpx;" catchtap="openSetting">去设置</button> 
+            </view> 
+        </view> 
+    </view>
+</view>

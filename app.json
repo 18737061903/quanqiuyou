@@ -1,0 +1,39 @@
+{
+    "pages": [
+        "pages/homes/homes",
+        "pages/wxlogin/wxlogin",
+        "pages/binding/binding",
+        "pages/map/map",
+        "pages/protocol/protocol",
+        "pages/pay/pay",
+        "pages/paySuccess/paySuccess",
+        "pages/address/address",
+        "pages/editaddress/editaddress",
+        "pages/setMsg/setMsg",
+        "pages/createOrder/createOrder",
+        "pages/successPay/successPay",
+        "pages/chooseactivi/chooseactivi",
+
+        "pages/catGoods/catGoods",
+        "pages/goodsDetail/goodsDetail",
+        "pages/cart/cart",
+        "pages/orderList/orderList",
+
+        "pages/o2oSearch/o2oSearch",
+        "pages/activityDetails/activityDetails",
+        "pages/shopDetails/shopDetails",
+        "pages/businessInfor/businessInfor",
+        "pages/o2oCoupons/o2oCoupons",
+        "pages/o2oShopMedia/o2oShopMedia"
+    ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于展示"
+    }
+  }
+}

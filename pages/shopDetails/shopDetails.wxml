@@ -1,0 +1,140 @@
+<!--pages/shopDetails/shopDetails.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<scroll-view class='all' scroll-y>
+    <!-- 店铺详细信息 1-->
+    <view class='section-one padding'>
+        <text class='shop-name'>{{shopDetails.fullName}}</text>
+        <view class='shop-msg'>
+            {{shopDetails.catName}}
+        </view>
+        <!-- <text class='shop-focus'>{{shopDetails}}</text> -->
+        <!-- img-->
+        <view class='swiper-box'>
+            <image lazy-load class='shop-img' src='{{ossHttp + shopDetails.img}}'></image>
+            <view class='media' bindtap='mediaDetails'>
+                <view class='img-num'>
+                    <image lazy-load class='media-icon' src='../../image/shopDetails/sm_pic_blank.png'></image>  
+                    {{media.img}}
+                </view>
+                <view class='vid-num'>  
+                    <image lazy-load class='media-icon' src='../../image/shopDetails/sm_camora.png'></image>
+                    {{media.video}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 店铺营业信息 2-->
+    <view class='section-two' bindtap='businessInfo'>
+        <view class='time'>
+            <image lazy-load class='time-icon' src='../../image/shopDetails/time.png'></image>
+            <text class='status'>{{shopDetails.status == 1 ? '营业中' : '休息中'}}</text>
+            <text class='business-time'>营业时间: {{openTime[0].startTime}}{{openTime.length ? '-' : ''}}{{openTime[0].endTime}}</text>
+            <view class='label'>
+                <text class='label-item' wx:for="{{label}}"  wx:key="{{index}}">{{item}}</text>
+            </view>
+            <image lazy-load wx:if="{{label.length}}" class='business-more' src='../../image/shopDetails/lg_rigth.png'></image>
+        </view>
+        <view class='line'></view>
+    </view>
+    <!-- 地址信息 3-->
+    <view class='section-thr mg-bot'>
+        <view class='address-msg clearfix'>
+            <image lazy-load  bindtap='shopAddress' class='location-img'  src='../../image/shopDetails/dizhi.png'></image>
+            <text  bindtap='shopAddress' class='address'>{{shopDetails.addressDetail}}</text>
+            <view class='address-btn'>
+                <view bindtap='shopAddress' class='shop-address'>
+                    <image lazy-load src='../../image/shopDetails/taxi.png'></image>
+                </view>
+                <view bindtap='makeCall' class='shop-phone'>
+                    <image lazy-load src='../../image/shopDetails/phone.png'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 店铺活动 4 -->
+    <view class='section-fou'>
+        <view class='menu-btn'>
+            <view bindtap='chooseMenu' class="btn-item {{index == select ? 'item-active' : ''}}" wx:for="{{menu}}" wx:key="{{index}}" data-index='{{index}}'>{{item.title}}</view>
+            <!-- 下划线跟随 -->
+            <view class="select-line" style="left: {{select * 33.33  + '%'}}" ></view>
+        </view>
+    </view>
+    <!-- 店铺活动 -->
+    <view class='menu-section mg-bot'>
+        <!-- 满减标签 -->
+        <view class='full-reduction' wx:if="{{reduce.length}}">
+            <view class='reduction-name'>满减
+                <view class='circle-l'></view>
+                <view class='circle-r'></view>
+            </view>
+            <view class='reduction-item' wx:for="{{reduce}}" wx:key="{{index}}">满{{item.fill}}减{{item.reduce}}</view>
+        </view>
+        <!-- 店铺优惠券 2 -->
+        <view class='coupons' wx:if="{{coupon.length}}">
+            <view class='coupon' wx:for="{{coupon}}"  wx:key="{{index}}">
+                <image lazy-load class='coup-bg' src='../../image/activity/coup_bg.png'></image>
+                <view class='coup-txt'>
+                    <view class='coup-content'>
+                        <view class='coup-title'>
+                            <view class='num'>{{item.reduce}}元</view>
+                            <view class='desc'>优惠券</view>
+                        </view>
+                        <view class='coup-details'>
+                            <view class='reduce'>{{item.name}}</view>
+                            <view class='fill'>满{{item.fill}}元可以使用</view>
+                            <view class='time'>有效期:{{filter.formatDate1(item.couponStartTime*1000, 'dayPoint')}}-{{filter.formatDate1(item.couponEndTime*1000, 'dayPoint')}}</view>
+                        </view>
+                    </view>
+                    <!-- 立即领取 -->
+                    <image 
+                        lazy-load  bindtap='receiveCoupon' 
+                        data-index='{{index}}' wx:if="{{item.isReceive == 0}}" 
+                        class='coup-img' src='../../image/activity/receive.png'>
+                    </image>
+                    <!-- 已抢光 -->
+                    <image 
+                        lazy-load wx:if="{{item.num == item.receiveNum}}" 
+                        class='coup-img' src='../../image/activity/hasGone.png'>
+                    </image>
+                    <!-- 已经领取 -->
+                    <image 
+                        lazy-load  wx:if="{{item.isReceive == 1}}" 
+                        class='coup-img' src='../../image/activity/received.png'>
+                    </image>
+                    <!-- <image lazy-load class='coup-img' src='../../image/activity/expired.png'></image> -->
+                </view>
+            </view>
+        </view>
+        <view class='line' wx:if="{{isMore}}"></view>
+        <!--  wx:if="{{coupon.length && coupon.length > 2}}" -->
+        <view bindtap="moreCoupon" class='coup-more' wx:if="{{isMore}}">
+            查看全部优惠券
+            <image lazy-load class='coup-more-icon' src='../../image/activityDeatils/mid_red_right.png'></image>
+        </view>
+    </view>
+    <!-- 更多推荐 -->
+    <!-- <view class='more-shop'>
+        <view class='title'>更多推荐</view>
+        <view class='shop-list'>
+            <view bindtap='moreShop' data-index='{{index}}' class='shop-list-item clearfix' wx:for="{{nearShop}}" wx:key="{{index}}">
+                <image lazy-load class='item-img' src='{{http + item.img}}'></image>
+                <view class='content'>
+                    <text class='shop-name'>{{item.name}}</text>
+                    <view class='start'></view>
+                    <view class='desc clearfix'>
+                        <view class='cat'>{{item.cat.catChildAndParent}}<text wx:if="{{item.cat.catChildAndParent}}">/</text>{{item.cat.child.name}}</view>formatThousand
+                        <view class='distance'>{{filter.formatkm(item.distance)}}m</view>
+                        <view class='address'>{{item.city}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+</scroll-view>
+<!-- 购物结算  -->
+<view class='go-buy'>
+    <view class='buy-btn'>
+        <image lazy-load class='buy-img' src='../../image/activityDeatils/settlement.png'></image>
+        <text class='buy-desc'>购物结算</text>
+    </view>
+</view>

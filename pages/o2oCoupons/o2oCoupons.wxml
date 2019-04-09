@@ -1,0 +1,30 @@
+<!--pages/o2oCoupons/o2oCoupons.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<!-- 店铺优惠券  -->
+<view  wx:if="{{coupon.length}}" class='section'>
+    <view class='coupons'>
+        <view class='coupon' wx:for="{{coupon}}"  wx:key="{{index}}">
+            <image lazy-load class='coup-bg' src='../../image/activity/coup_bg.png'></image>
+            <view class='coup-txt'>
+                <view class='coup-content'>
+                    <view class='coup-title'>
+                        <view class='num'>{{item.reduce}}元</view>
+                        <view class='desc'>优惠券</view>
+                    </view>
+                    <view class='coup-details'>
+                        <view class='reduce'>{{item.name}}</view>
+                        <view class='fill'>满{{item.fill}}元可以使用</view>
+                        <view class='time'>有效期:{{filter.formatDate1(item.couponStartTime*1000, 'dayPoint')}}-{{filter.formatDate1(item.couponEndTime*1000, 'dayPoint')}}</view>
+                    </view>
+                </view>
+                <!-- 立即领取 -->
+                <image lazy-load bindtap='receiveCoupon' data-index='{{index}}' wx:if="{{item.isReceive == 0}}" class='coup-img' src='../../image/activity/receive.png'></image>
+                <!-- 已抢光 -->
+                <image lazy-load wx:if="{{item.num == item.receiveNum}}" class='coup-img' src='../../image/activity/hasGone.png'></image>
+                <!-- 已经领取 -->
+                <image lazy-load wx:if="{{item.isReceive == 1}}" class='coup-img' src='../../image/activity/received.png'></image>
+                <!-- <image class='coup-img' src='../../image/activity/expired.png'></image> -->
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,125 @@
+/* pages/editaddress/editaddress.wxss */
+.page{
+  width: 100%;
+  height: 100vh;
+  background:rgba(244,244,244,1);
+}
+
+.common{
+  padding: 29rpx 30rpx;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-top:1rpx solid rgba(244,244,244,1);
+  background: #fff; 
+  box-sizing: border-box;
+}
+.common text{
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(102,102,102,1);
+}
+.address-name input{
+  width: 500rpx;
+  padding-left:88rpx; 
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+}
+.address-phone input{
+  width: 500rpx;
+  padding-left:60rpx; 
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+}
+.address-choose{
+  position: relative
+}
+
+.address-detail input{
+  width: 500rpx;
+  padding-left:60rpx; 
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+}
+.address-default text{
+  padding-right: 400rpx;
+}
+.address-picker{
+  font-size:28rpx;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(26,25,28,1);
+  width: 690rpx;
+  position: relative;
+}
+.address-picker text{
+    padding-right: 60rpx;
+}
+.picker-img{
+  width: 23rpx;
+  height: 23rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 50%;
+  margin-top:-16rpx; 
+}
+.picker-img image{
+  width: 23rpx;
+  height: 23rpx;
+}
+.wx-switch-input{
+  width:79rpx !important;
+  height:40rpx !important;
+ 
+  }
+.wx-switch-input::before{
+  width:79rpx !important;
+  height:40rpx !important;
+  border: 0.1rpx solid #DBDBDB !important;
+  }
+.wx-switch-input::after{
+  width: 38rpx !important;
+  height: 38rpx !important;
+  border-radius:20rpx !important;
+  }
+
+.address-delet{
+  width: 100%;
+  height: 100rpx;
+  background:#fff;
+  text-align: center;
+  line-height: 100rpx;
+  margin-top: 20rpx;
+  }
+  .address-delet text{
+     font-size:32rpx;
+     font-family:PingFangSC-Regular;
+     font-weight:400;
+     color:rgba(232,83,82,1);
+     line-height:45rpx;
+  }
+.address-btn{
+  width: 100%;
+  height: 100rpx;
+  background:linear-gradient(238deg,rgba(239,102,77,1) 0%,rgba(232,83,82,1) 100%);
+  text-align: center;
+  position: fixed;
+  bottom: 0rpx;
+  line-height: 100rpx;
+}
+.address-btn text{
+    font-size:32rpx;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(249,245,245,1);
+    line-height:45rpx;
+}
+.placeholder{
+  font-size: 28rpx;
+  color:rgba(153,153,153,1);
+}

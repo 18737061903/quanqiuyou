@@ -1,0 +1,92 @@
+<!--pages/o2oSearch/o2oSearch.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<view class='all'>
+    <view class='header'>
+        <!-- 搜索 -->
+        <view class='search-box'>
+            <view class='search'>
+                <image lazy-load class='search-icon' src='../../image/search/top_search.png'></image>
+                <input class='search-txt' bindinput='getValue' value="{{searchValue}}" placeholder-style="color: #DBDBDB; font-size: 28rpx;" placeholder="请输入关键词搜索活动"></input>
+                <image lazy-load bindtap='clearValue' class='close-icon' src='../../image/search/search_close.png'></image>
+            </view>
+            <view bindtap='doSearch' class='submit'>确定</view>
+        </view>
+    </view>
+    <!-- 缺省 -->
+    <view class='default' wx:if="{{!hasRes}}">
+        <!-- 推荐活动 -->
+        <view class='recomm-act'>
+            <view class='head'>
+                <text class='title'>推荐活动</text>
+                <view class='icon'></view>
+            </view>
+            <view class='recomm-title clearfix' wx:if="{{recommAct.length}}">
+                <view  bindtap='itemSearch' class='title-item omit' wx:for="{{recommAct}}" wx:key="{{index}}" data-item="{{item}}" class='title-item omit'>{{item}}</view>
+            </view>
+            <view wx:if="{{history.length}}" class='head'>
+                <text class='title'>历史搜索</text>
+                <view bindtap='delHistory' class='icon'>
+                    <image lazy-load class='del-icon' src="../../image/search/del.png"></image>
+                </view>
+            </view>
+            <view class='recomm-title clearfix'>
+                <view bindtap='itemSearch' class='title-item omit' wx:for="{{history}}" wx:key="{{index}}" data-item="{{item}}">{{item}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 搜索出的o2o活动 -->
+    <view class='act-box' wx:if="{{actList.length}}">
+        <!-- 活动列表 -->
+        <view class='activity-list'>
+            <view class='activity-item' wx:for="{{actList}}"  wx:for-item="actItem" wx:key="{{index}}">
+                <!-- 店铺信息 -->
+                <view class='shop-msg omit clearfix'>
+                    <image lazy-load class='shop-img' src='{{actItem.localeHeadPic}}'></image>
+                    <view class='shop-name omit'>{{actItem.localeName}}</view>
+                    <view class='shop-distance'>{{filter.formatThousand(actItem.distance)}}m</view>
+                    <view class='create-time'>发布时间:{{filter.formatDate1(actItem.createTime*1000,'noyear')}}</view>
+                </view>
+                <!-- 活动信息 -->
+                <view class='activity-detail'>
+                    <view class='activity-msg' data-index='{{index}}' bindtap='goAcDetails'>
+                        <!-- 活动详情 -->
+                        <image lazy-load class='activity-img' src='{{actItem.img}}'></image>
+                        <view class='activity-zz'></view>
+                        <view class='activity-desc'>
+                            <view class='activity-title omit'>{{actItem.title}}</view>
+                            <view class='activity-content omit'>{{actItem.content}}</view>
+                        </view>
+                        <!-- 活动标签 -->
+                        <view wx:if="{{actItem.type == 1}}" class='activity-label activity-label-reduce'>满减</view>
+                        <view wx:if="{{actItem.type == 2}}" class='activity-label activity-label-coup'>优惠券</view>
+                    </view>
+                    <!-- 操作 -->
+                    <view class='operation'>
+                        <image lazy-load class='hot-img' src='../../image/o2oIndex/hot.png'></image>
+                        <view class='collection'>{{actItem.hot}}</view>
+                        <image 
+                            lazy-load
+                            class='collect-img' 
+                            style='margin-left: 70rpx;' 
+                            src="{{actItem.isCollect ? ' ../../image/o2oIndex/selected.png' : '../../image/o2oIndex/un_select.png'}}">
+                        </image>
+                        <view 
+                            lazy-load
+                            class='collection' 
+                            style="color: {{actItem.isCollect ? '#E85352' : '#333333'}}">
+                            {{filter.formatThousand(actItem.collectNum)}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 半屏缺省 -->
+        <view wx:if="{{actList.length && (actList.length < 3) && actPage == 1}}" class='half-default'>没有更多商家了~</view>
+        <!-- 没有活动 缺省 -->
+        <view wx:if="{{!actList.length}}" class='no-shop'>
+            <image lazy-load class="shop-blank" src='../../image/o2oIndex/no_shop.png'></image>
+            <view class='no-more-desc'>附近没有商家~</view>
+        </view>
+    </view>
+</view>
+

@@ -1,0 +1,537 @@
+/* pages/goodsDetail/goodsDetail.wxss */
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+.line {
+    width: 100%;
+    height: 20rpx;
+    background: #F4F4F4;
+}
+/* all */
+.all {
+    position: relative;
+    padding-bottom: 100rpx;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+}
+.all-hidden {
+    height: 100vh;
+    overflow: hidden;
+}
+/* 轮播 */
+.swiper-box {
+    width: 100%;
+    height: 650rpx;
+    overflow: hidden;
+}
+.swiper-box .swiper{
+    width: 100%;
+    height: 650rpx;
+    overflow: hidden;
+}
+.swiper-box .swiper .slide-image {
+    width: 100%;
+    display: block;
+    height: 650rpx;
+}
+/* 商品详细 */
+.detail {
+    padding: 30rpx 20rpx;
+    box-sizing: border-box;
+}
+/* 价格信息 */
+.price-box {
+    height: 38rpx;
+    line-height: 38rpx;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 36rpx;
+}
+.price-box .price-item{
+    height: 38rpx;
+    line-height: 38rpx;
+    float: left;
+}
+.price-item .price-sym{
+    line-height: 38rpx;
+    color: #E85352;
+    font-size: 30rpx;
+}
+.price-item .price{
+    line-height: 38rpx;
+    color: #E85352;
+    font-size: 46rpx;
+    font-weight: bold;
+}
+.price-item .old-price-sym{
+    line-height: 38rpx;
+    color: #B5B5B5;
+    font-size: 26rpx;
+    margin-right: 3rpx;
+}
+.price-item .old-price{
+    line-height: 38rpx;
+    color: #B5B5B5;
+    font-size: 30rpx;
+    text-decoration: line-through;
+}
+/* 商品名称  及店铺*/
+.detail .name {
+    width: 100%;
+    line-height: 48rpx;
+    font-size: 34rpx;
+    color: #333333;
+    margin-bottom: 26rpx;
+}
+/* 商品描述 */
+.detail .desc {
+    width: 100%;
+    line-height: 40rpx;
+    font-size: 26rpx;
+    color: #666666;
+    margin-bottom: 24rpx;
+}
+/* 统计信息 销量 */
+.statistical {
+    width: 100%;
+    height: 37rpx;
+    line-height: 37rpx;
+    overflow: hidden;
+}
+.sale-box {
+    height: 37rpx;
+    line-height: 37rpx;
+    float: left;
+}
+.sale-box .sale-img{
+    width: 34rpx;
+    height: 33rpx;
+    vertical-align: middle;
+    margin-right: 13rpx;
+}
+.sale-box .sale-num{
+    font-size: 26rpx;
+    color: #333333;
+}
+/* 优惠信息 */
+.preferential {
+    padding: 26rpx 20rpx;
+    box-sizing: border-box;
+    width: 100%;
+    background:rgba(252,248,248,1);
+}
+.preferential .title {
+    height: 100%;
+    width: 50rpx;
+    font-size: 24rpx;
+    line-height: 33rpx;
+    color: #666666;
+    float: left;
+}
+.preferential .right-detail {
+    float: right;
+    width: 625rpx;
+    overflow: hidden;
+}
+/* 积分抵扣 */
+.right-detail .points-deduction{
+    width: 100%;
+    height: 37rpx;
+    line-height: 37rpx;
+}
+.points-deduction .desc {
+    font-size: 24rpx;
+    color: #E85352;
+    line-height: 33rpx;
+    height: 37rpx;
+    display: block;
+    float: left;
+    padding: 0 11rpx;
+    box-sizing: border-box;
+    border: .5rpx solid rgba(232,83,82,1);
+    border-radius: 5rpx;
+    margin-right: 16rpx;
+}
+.points-deduction .deduction {
+    font-size: 26rpx;
+    color: #333333;
+    line-height: 37rpx;
+    height: 37rpx;
+    display: block;
+    float: left;
+}
+.points-deduction .deduction .deduction-money{
+    color: #E85352;
+}
+/* 商品标签 */
+.label-box {
+    width: 100%;
+    padding: 22rpx 70rpx 21rpx 70rpx;
+    box-sizing: border-box;
+}
+.label-box .label-item{
+    font-size: 26rpx;
+    height: 37rpx;
+    line-height: 37rpx;
+    color: #666666;
+    display: inline-block;
+    margin-right: 70rpx;
+}
+.label-box .label-item:nth-child(3n) {
+    margin-right: 0;
+}
+.label-box .label-item .label-img{
+    width: 31rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 14rpx;
+    margin-top: -4rpx;
+}
+.label-box .label-item .label-title {
+    font-size: 26rpx;
+    line-height: 37rpx;
+    color: #666666;
+}
+/* 图文详情 */
+/* 标题 */
+.rich-text-title {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    position: relative;
+    padding: 36rpx 20rpx 43rpx 20rpx;
+    box-sizing: border-box;
+        background: #F4F4F4;
+}
+.rich-text-title .line-left {
+    width: 250rpx;
+    height: .5rpx;
+    background: #999999;
+    float: left;
+}
+.rich-text-title .line-right {
+    width: 250rpx;
+    height: .5rpx;
+    background: #999999;
+    float: right;
+}
+.rich-text-title .name {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -105rpx;
+    margin-top: -40rpx;
+    width: 210rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 28rpx;
+    color: #999999;
+}
+.rich-text-title .name .title-img{
+    width: 32rpx;
+    height: 28rpx;
+    vertical-align: middle;
+}
+/* 富文本内容 */
+.rich-text-detail {
+    width: 100%;
+    padding: 30rpx 15rpx 0 15rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+/* 标题 */
+.text-title {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 24rpx;
+    color: #999999;
+    text-align: center;
+    background: #F4F4F4;
+}
+/* 底部按钮 */
+.bottom-box {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow:0px -2px 5px 1px rgba(153,153,153,0.1);
+}
+/*  */
+.entrance-box {
+    width: calc(100% - 360rpx);
+    height: 100rpx;
+    line-height: 100rpx;
+    float: left;
+    display: flex;
+}
+.entrance-box .each {
+    width: 40rpx;
+    height: 40rpx;
+    display: block;
+    margin: 0 auto;
+}
+.entrance-box .entrance-item {
+    padding-top: 16rpx;
+    box-sizing: border-box;
+    flex: 1;
+}
+.entrance-box .entrance-item .entrance-name{
+    font-size: 20rpx;
+    color: #666666;
+    line-height: 38rpx;
+    text-align: center;
+    width: 100%;
+    height: 38rpx;
+    overflow: hidden;
+}
+/* 购物车 数量 */
+.car {
+    position: relative;
+}
+.car .car-num {
+    position: absolute;
+    top: 10rpx;
+    left: calc(50% + 5rpx);
+    padding: 0 6rpx;
+    box-sizing: border-box;
+    height: 24rpx;
+    line-height: 22rpx;
+    font-size: 20rpx;
+    color: #E85352;
+    border-radius: 12rpx;
+    border: .5rpx solid #E85352;
+    background: #fff;
+}
+.car-btn {
+    width: 360rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: linear-gradient(238deg,rgba(239,102,77,1) 0%,rgba(232,83,82,1) 100%);
+    float: right;
+    color: #fff;
+    font-size: 30rpx;
+    text-align: center;
+}
+/* sku属性选择 */
+.sku-box {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 100vh;
+    left: 0;
+    z-index: 1000;
+    transition: ease all .6s;
+}
+/* show-sku */
+.show-sku {
+    top: 0;
+    transition: ease all .6s;
+}
+/* 内部遮罩速度慢（点击关闭用，因为外层遮罩层级底） */
+.close-sku-bg {
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+}
+/* 外层遮罩速度快 */
+.sku-bg {
+    width: 100%;
+    height: 100vh;
+    background:rgba(0,0,0,0.55);
+    position: fixed;
+    top: 100vh;
+    left: 0;
+    z-index: 999;
+    transition: ease all 0s;
+}
+.show-sku-bg {
+    top: 0;
+    transition: ease all 0s;
+}
+/* sku 内容部分样式 */
+.sku-box .content-box {
+    width: 100%;
+    height: 880rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    padding: 24rpx 24rpx 100rpx 24rpx;
+    box-sizing: border-box;
+    z-index: 1002;
+    overflow: visible;
+}
+/* top */
+.content-box .top-msg{
+    width: 100%;
+    padding-left: 230rpx;
+    position: relative;
+    padding-bottom: 27rpx;
+    box-sizing: border-box;
+    border-bottom: .5rpx solid #DBDBDB;
+    overflow: visible;
+}
+.top-msg .price-all {
+    width: 100%;
+    font-size: 24rpx;
+    color: #E85352;
+    line-height: 38rpx;
+    margin-bottom: 18rpx;
+}
+.top-msg .price-all .price {
+    width: 100%;
+    font-size: 34rpx;
+    color: #E85352;
+    line-height: 38rpx;
+}
+.top-msg .sku-number {
+    width: 100%;
+    font-size: 28rpx;
+    color: #666666;
+    line-height: 40rpx;
+    height: 40rpx;
+}
+.top-msg .serial-number {
+    width: 100%;
+    font-size: 28rpx;
+    color: #999999;
+    line-height: 37rpx;
+    height: 37rpx;
+    margin-bottom: 4rpx;
+}
+/* 商品缩略图 */
+.top-msg .goods-img {
+    width: 212rpx;
+    height: 212rpx;
+    position: absolute;
+    left: 0;
+    bottom: 18rpx;
+    background: #fff;
+    z-index: 1004;
+    border-radius: 6rpx;
+}
+.top-msg .goods-img .small-img{
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 6rpx;
+}
+/* close */
+.top-msg .close-sku {
+    width: 45rpx;
+    height: 45rpx;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/* mid */
+.content-box .mid-msg {
+    width: 100%;
+    /* height: 220rpx; */
+    height: 455rpx;
+    padding-top: 20rpx;
+    box-sizing: border-box;
+    position: relative;
+    overflow: visible;
+}
+.content-box .mid-msg .sku-title {
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #666666;
+    font-size: 28rpx;
+    margin-bottom: 14rpx;
+}
+.content-box .mid-msg .sku-item {
+    height: 58rpx;
+    line-height: 57rpx;
+    text-align: center;
+    border-radius: 5rpx;
+    border: .5rpx solid rgba(153,153,153,1);
+    padding:  0 20rpx;
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    font-size: 26rpx;
+    color: #333333;
+}
+.content-box .mid-msg .sku-item-select {
+    color: #e85352;
+    border: .5rpx solid #e85352;
+}
+.content-box .mid-msg .sku-num-title {
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #666666;
+    font-size: 28rpx;
+    position: absolute;
+    left: 0;
+    bottom: 25rpx;
+}
+/* num-edit */
+.content-box .mid-msg .num-edit {
+    height: 46rpx;
+    line-height: 46rpx;
+    border: .5rpx solid rgba(153,153,153,1);
+    position: absolute;
+    right: 30rpx;
+    bottom: -25rpx;
+    width: 160rpx;
+    display: flex;
+    box-sizing: border-box;
+}
+.mid-msg .num-edit .num-item {
+    font-size: 26rpx;
+    line-height: 42rpx;
+    text-align: center;
+}
+.mid-msg .num-edit .add-btn {
+    width: 50rpx;
+    height: 100%;
+    font-size: 28rpx;
+    color: #E85352;
+}
+.mid-msg .num-edit .del-btn {
+    width: 50rpx;
+    height: 100%;
+    font-size: 28rpx;
+    color: #999999;
+}
+.mid-msg .num-edit .buy-num {
+    width: 60rpx;
+    height: 100%;
+    color: #333333;
+    border-left: .5rpx solid rgba(153,153,153,1);
+    border-right: .5rpx solid rgba(153,153,153,1);
+}
+
+/* bottom */
+.content-box .bottom-btn {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 34rpx;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background:linear-gradient(238deg,rgba(239,102,77,1) 0%,rgba(232,83,82,1) 100%);
+}

@@ -1,0 +1,132 @@
+<!--pages/goodsDetail/goodsDetail.wxml-->
+<import src="../../wxParse/wxParse/wxParse.wxml"/>
+<!-- 商品详情 {{showSku ? 'all-hidden' : ''}} -->
+<scroll-view class='all' scroll-y>
+    <!-- 轮播 model 1-->
+    <view class='swiper-box'>
+        <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}"  duration="{{duration}}" circular="{{circular}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{afterColor}}">
+            <block wx:for="{{imgList}}" wx:key="{{index}}">
+                <swiper-item>
+                    <image lazy-load bindtap="previewImage" data-link='{{item}}' src="{{item}}" class="slide-image" width="100%" height="650" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <!-- 我的积分入口 model 2 -->
+    <view></view>
+    <!-- 商品基本信息 model 3-->
+    <view class='detail'>
+        <!-- 价格信息 -->
+        <view class='price-box clearfix'>
+            <view class='price-item' style='margin-right: 12rpx;'>
+                <text class='price-sym'>￥</text>
+                <text class='price'>{{goodsDetail.price}}</text>
+            </view>
+            <view class='price-item' wx:if="{{goodsDetail.oldPrice}}">
+                <text class='old-price-sym'>原价</text>
+                <text class='old-price'>{{goodsDetail.oldPrice}}</text>
+            </view>
+        </view>
+        <!-- 商品名称 及店铺-->
+        <view class='name'>{{goodsDetail.name}}<text></text></view>
+        <!-- 商品描述 -->
+        <view class='desc'>{{goodsDetail.content}}</view>
+        <!-- 统计信息 -->
+        <view class='statistical clearfix'>
+            <!-- 销量 -->
+            <view class='sale-box'>
+                <image lazy-load class='sale-img' src='../../image/goodsDetail/sale.png'></image>
+                <text class='sale-num'>销量：{{goodsDetail.sale ? goodsDetail.sale : '0'}}件</text>
+            </view>
+        </view>
+    </view>
+    <!-- 商品优惠信息 model 4 -->
+    <view class='preferential clearfix' wx:if="{{goodsDetail.userCredit}}">
+        <view class='title'>优惠</view>
+        <view class='right-detail'>
+            <!-- 积分抵扣 -->
+            <view class='points-deduction clearfix'>
+                <text class='desc'>积分抵扣</text>
+                <text class='deduction'>当前积分{{goodsDetail.userCredit}}，可抵扣<text class='deduction-money'>{{goodsDetail.userCreditMoney}}元</text></text>
+            </view>
+        </view>
+    </view>
+    <!-- 商品标签 -->
+    <view class='label-box'>
+        <view class='label-item' wx:for="{{goodsLabel}}" wx:key="{{item.id}}">
+            <image lazy-load class='label-img' src='../../image/goodsDetail/right.png'></image>
+            <text class='label-title'>{{item.label}}</text>
+        </view>
+    </view>
+    <!-- <view class='line'></view> -->
+    <!-- 图文详情 -->
+    <view class='rich-text-title clearfix'>
+        <view class='line-left'></view>
+        <view class='line-right'></view>
+        <view class='name'>
+            <image lazy-load class='title-img' src='../../image/goodsDetail/img_blank.png'></image>
+            图文详情
+        </view>
+    </view>
+    <!-- 富文本内容 -->
+    <view class='rich-text-detail'><template is="wxParse" data="{{wxParseData:htmlDetail.nodes}}"/></view>
+    <!-- bottom title -->
+    <view class='text-title'>————  已经到底了  ————</view>
+    <!-- 底部按钮 -->
+    <view class='bottom-box clearfix'>
+        <view class='entrance-box'>
+            <view class='entrance-item'>
+                <image lazy-load class='each' src='../../image/goodsDetail/shop_blank.png'></image>
+                <view class='entrance-name'>店铺</view>
+            </view>
+            <view bindtap='selectChange' class='entrance-item'>
+                <image lazy-load class='each' wx:if='{{goodsDetail.collect}}' src='../../image/goodsDetail/selected.png'></image>
+                <image lazy-load class='each' wx:else='{{goodsDetail.collect}}' src='../../image/goodsDetail/un_selected.png'></image>
+                <view class='entrance-name'>收藏</view>
+            </view>
+            <view bindtap='myCar' class='entrance-item car'>
+                <image lazy-load class='each' src='../../image/goodsDetail/car.png'></image>
+                <view class='entrance-name'>购物车</view>
+                <view wx:if="{{carNum}}" class='car-num'>{{carNum > 99 ? '99+' : carNum}}</view>
+            </view>
+        </view>
+        <view class='car-btn' bindtap='addCar'>加入购物车</view>
+    </view>
+    <!-- sku box 外层遮罩速度快-->
+    <view catchtouchmove="ture" class="sku-bg {{showSku ? 'show-sku-bg' : ''}}" bindtap='closeSku'></view>
+    <view catchtouchmove="ture" class="sku-box {{showSku ? 'show-sku' : ''}}">
+        <!-- 内部遮罩速度慢（点击关闭用，因为外层遮罩层级底） -->
+        <view class='close-sku-bg' bindtap='closeSku'></view>
+        <!-- 内容部分 --> 
+        <view class='content-box'>
+            <!-- 顶部价格信息 -->
+            <view class='top-msg'>
+                <view class='price-all'>
+                    <view class='price'>{{spec.price}}</view>
+                </view>
+                <!-- 商品编号： -->
+                <view class='sku-number'>编号: {{spec.id}}</view>
+                <view class='serial-number'>库存: {{spec.stock}}</view>
+                <view class='goods-img'>
+                    <image lazy-load class='small-img sun-center' src='{{spec.img}}'></image>
+                </view>
+                <image lazy-load class='close-sku' bindtap='closeSku' src='../../image/goodsDetail/close_sku.png'></image>
+            </view>
+            <!-- sku选择 -->
+            <view class='mid-msg'>
+                <view class='sku-title'>规格</view>
+                <!-- 具体规格 -->
+                <view class="sku-item {{specSelect == index ? 'sku-item-select' : ''}}" bindtap='selectSpec' wx:for="{{goodSpecList}}" data-index='{{index}}' wx:key="{{index}}">{{item.name}}</view>
+                <view class='sku-num-title'>数量</view>
+                <!-- 数量增减 -->
+                <view class='num-edit'>
+                    <view class='num-item del-btn' bindtap='delNum'>-</view>
+                    <view class='num-item buy-num'>{{buyNum}}</view>
+                    <view class='num-item add-btn' bindtap='addNum'>+</view>
+                </view>
+            </view>
+            <!-- 加入购物车btn -->
+            <view class='bottom-btn' bindtap='addGoods'>确定</view>
+        </view>
+    </view>
+</scroll-view>

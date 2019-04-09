@@ -1,0 +1,114 @@
+<!--pages/activityDetails/activityDetails.wxml-->
+<wxs src='../../utils/filter.wxs' module='filter' />
+<scroll-view class='all' scroll-y>
+    <!-- 活动描述信息 1-->
+    <view class='section-one line'>
+        <image lazy-load class='ac-img' src="{{ossHttp + actDetails.img}}"></image>
+        <view class='ac-title'>{{actDetails.title}}</view>
+        <!-- 满减标签 -->
+        <view class='full-reduction' wx:if="{{reduce.length}}">
+            <view class='reduction-name'>满减
+                <view class='circle-l'></view>
+                <view class='circle-r'></view>
+            </view>
+            <view class='reduction-item' wx:for="{{reduce}}" wx:key="{{index}}">满{{item.fill}}减{{item.reduce}}</view>
+        </view>
+        <!-- 活动介绍 -->
+        <text class='ac-desc'>{{actDetails.content}}</text>
+        <!-- 点赞收藏操作 -->
+        <view class='operation'>
+            <image 
+                bindtap='selectChange' 
+                class='select-img' lazy-load
+                src="{{actDetails.isCollect ? ' ../../image/activityDeatils/selected.png' : '../../image/activityDeatils/un_select.png'}}">
+            </image>
+            <view 
+                bindtap='selectChange' lazy-load 
+                style="color: {{actDetails.isCollect ? '#E85352' : '#333333'}}" 
+                class="collection">{{filter.formatThousand(actDetails.collectNum)}}
+            </view>
+            <image 
+                bindtap='likeChange' 
+                class='zan-img' lazy-load
+                style='margin-left: 70rpx;' 
+                src="{{actDetails.isLike ? ' ../../image/activityDeatils/zaned.png' : '../../image/activityDeatils/un_zaned.png'}}">
+            </image>
+            <view 
+                bindtap='likeChange' lazy-load 
+                style="color: {{actDetails.isLike ? '#E85352' : '#333333'}}" 
+                class='collection'>{{filter.formatThousand(actDetails.likeNum)}}
+            </view>
+        </view>
+    </view>
+    <!-- 店铺优惠券 2 -->
+    <view  wx:if="{{coupon.length}}" class='section-two line'>
+        <view class='model-title' style='padding-left: 10rpx;box-zing:border-box;'>店铺优惠券</view>
+        <view class='coupons'>
+            <view class='coupon' wx:for="{{coupon}}"  wx:key="{{index}}">
+                <image lazy-load class='coup-bg' src='../../image/activity/coup_bg.png'></image>
+                <view class='coup-txt'>
+                    <view class='coup-content'>
+                        <view class='coup-title'>
+                            <view class='num'>{{item.reduce}}元</view>
+                            <view class='desc'>优惠券</view>
+                        </view>
+                        <view class='coup-details'>
+                            <view class='reduce'>{{item.name}}</view>
+                            <view class='fill'>满{{item.fill}}元可以使用</view>
+                            <view class='time'>有效期:{{filter.formatDate1(item.couponStartTime*1000, 'dayPoint')}}-{{filter.formatDate1(item.couponEndTime*1000, 'dayPoint')}}</view>
+                        </view>
+                    </view>
+                    <!-- 立即领取 -->
+                    <image lazy-load bindtap='receiveCoupon' data-index='{{index}}' wx:if="{{item.isReceive == 0}}" class='coup-img' src='../../image/activity/receive.png'></image>
+                    <!-- 已抢光 -->
+                    <image lazy-load wx:if="{{item.num == item.receiveNum}}" class='coup-img' src='../../image/activity/hasGone.png'></image>
+                    <!-- 已经领取 -->
+                    <image lazy-load wx:if="{{item.isReceive == 1}}" class='coup-img' src='../../image/activity/received.png'></image>
+                    <!-- <image class='coup-img' src='../../image/activity/expired.png'></image> -->
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 活动时间 3 -->
+    <view class='section-thr line'>
+        <view class='model-title'>活动时间</view>
+        <view class='time-item'>开始时间： {{filter.formatDate1(actDetails.startTime*1000)}}</view>
+        <view class='time-item'>开始时间： {{filter.formatDate1(actDetails.endTime*1000)}}</view>
+    </view>
+    <!-- 店铺信息 4 -->
+    <view class='section-fou line'>
+        <view class='model-title'>店铺信息</view>
+        <!-- 店铺信息 -->
+        <view class='shop-msg clearfix'>
+            <image lazy-load class='shop-img' src="{{ossHttp + shopInfo.headPic}}"></image>
+            <text class='shop-name omit'>{{shopInfo.name}}</text>
+            <view bindtap='goShop' class='goShop'>进入店铺</view>
+        </view>
+        <!-- <view style='height: 1rpx;backgroud: #DBDBDB;width: 100%;'></view> -->
+        <!-- 地址信息 -->
+        <view class='address-msg clearfix'>
+            <image lazy-load bindtap='shopAddress' class='location-img'  src='../../image/activityDeatils/red_location.png'></image>
+            <text  bindtap='shopAddress' class='address'>{{shopInfo.addressDetail}}</text>
+            <view class='address-btn'>
+                <view bindtap='shopAddress' class='shop-address'>
+                    <image lazy-load src='../../image/activityDeatils/taxi.png'></image>
+                </view>
+                <view bindtap='makeCall' class='shop-phone'>
+                    <image lazy-load src='../../image/activityDeatils/phone.png'></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 活动详情 5 -->
+    <view class='section-fiv line'>
+        <view class='model-title'>活动详情</view>
+        <text class='ac-details-desc'>{{actDetails.detail}}</text>
+    </view>
+</scroll-view>
+<!--  -->
+<view class='go-buy'>
+    <view class='buy-btn'>
+        <image lazy-load class='buy-img' src='../../image/activityDeatils/settlement.png'></image>
+        <text class='buy-desc'>购物结算</text>
+    </view>
+</view>
